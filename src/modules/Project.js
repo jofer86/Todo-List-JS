@@ -33,15 +33,15 @@ class Project {
 	}
 
 	updatePriority() {
-		const timeLeft = this.dueDate.getDate() - new Date().getDate();
-		console.log (new Date().getDate() ,this.dueDate.getDate());
+		const timeLeft = Math.floor((this.dueDate - new Date()) / 86400000);
+		console.log (timeLeft);
 		if (timeLeft <= 1){
 			this.priority = 'Red';
 		} else if (timeLeft > 1 && timeLeft <= 3) {
 			this.priority = 'Orange';
 		} else {
 			this.priority = 'Green';
-		}
+		}		
 	}
 	
 	addTodo(todo) {

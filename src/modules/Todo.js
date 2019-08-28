@@ -1,5 +1,5 @@
 class Todo {
-	constructor(name, description, dueDate = new Date().getDate) {
+	constructor(name, description, dueDate = new Date()) {
 		this.name = name;
 		this.description = description;
 		this.dueDate = dueDate;
@@ -21,14 +21,15 @@ class Todo {
 	}
 
 	updatePriority() {
-		const timeLeft = new Date().getDate - this.dueDate;
+		const timeLeft = Math.floor((this.dueDate - new Date()) / 86400000);
+		console.log (timeLeft);
 		if (timeLeft <= 1){
 			this.priority = 'Red';
 		} else if (timeLeft > 1 && timeLeft <= 3) {
 			this.priority = 'Orange';
 		} else {
 			this.priority = 'Green';
-		}
+		}		
 	}
 }
 
