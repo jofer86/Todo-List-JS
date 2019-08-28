@@ -1,0 +1,28 @@
+{
+  "name": "Todo-List-JS",
+  "version": "1.0.0",
+  "description": "This is the Todo List App, in the JS section for the Microverse Full Time Program!!",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jofer86/Todo-List-JS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jofer86/Todo-List-JS/issues"
+  },
+  "homepage": "https://github.com/jofer86/Todo-List-JS#readme",
+  "devDependencies": {
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.7"
+  },
+  "dependencies": {
+    "eslint": "^6.2.2"
+  }
+}
