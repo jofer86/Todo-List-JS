@@ -50,8 +50,8 @@ class Project {
 	
 	addTodo(todo) {
 		if ((Math.floor(this.dueDate - todo.dueDate) <= 0) || Math.floor(todo.dueDate - new Date()) <= 0) {
-			return false
-		};
+			return false;
+		}
 		this.todos.push(todo);
 	}
 

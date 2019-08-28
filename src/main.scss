@@ -1,5 +1,27 @@
 @import 'reset.css';
 
-h1 {
-  color: red;
+.appContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(to right bottom, #51dacf, #651086);  
+  height: 100vh;  
+};
+
+.project {
+  height: 80vh;
+  width: 80vw;
+  border-radius: 40px;
+  -webkit-box-shadow: 0px 0px 30px 8px rgba(0,0,0,.75);
+  -moz-box-shadow: 0px 0px 30px 8px rgba(0,0,0,.75);
+  box-shadow: 0px 0px 30px 8px rgba(0,0,0,.75);
+  &__green{
+    background-image: linear-gradient(to left, #1fab89, #2e4137);   
+  }
+  &__orange{
+    
+  }
+  &__red{
+    
+  }
 }
