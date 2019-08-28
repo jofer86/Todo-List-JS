@@ -1,10 +1,11 @@
 class Project {
-	constructor(name, category = 'default', description, dueDate = new Date().getDate) {
+	constructor(name, category = 'default', description, dueDate = new Date().getDate, todos) {
 		this.name = name;
 		this.category = category;
 		this.description = description;
 		this.dueDate = dueDate;
-		updatePriority();
+		this.updatePriority();
+		this.todos = [];
 	}
 	get getName() {
 		return this.name;
@@ -18,10 +19,13 @@ class Project {
 	get getDueDate() {
 		return this.dueDate;
 	}
+	get getTodo() {
+		return this.todo;
+	}
 
 	set setDueDate(newDate) {
 		this.date = newDate;
-		updatePriority();
+		this.updatePriority();
 	}
 
 	set setCategory(newCategory) {
@@ -38,5 +42,17 @@ class Project {
 			this.priority = 'Green';
 		}
 	}
+	
+	addTodo(todo) {
+		this.todo.push(todo);
+	}
+
+	delTodo(index) {
+		this.todo.splice(index, 1);
+	}
+
 }
+
+
+
 export default Project;
