@@ -1,5 +1,5 @@
 class Project {
-	constructor(name, category = 'default', description, dueDate = new Date().getDate, todos) {
+	constructor(name, category = 'default', description, dueDate = new Date()) {
 		this.name = name;
 		this.category = category;
 		this.description = description;
@@ -33,7 +33,8 @@ class Project {
 	}
 
 	updatePriority() {
-		const timeLeft = new Date().getDate - this.dueDate;
+		const timeLeft = this.dueDate.getDate() - new Date().getDate();
+		console.log (new Date().getDate() ,this.dueDate.getDate());
 		if (timeLeft <= 1){
 			this.priority = 'Red';
 		} else if (timeLeft > 1 && timeLeft <= 3) {
@@ -44,11 +45,11 @@ class Project {
 	}
 	
 	addTodo(todo) {
-		this.todo.push(todo);
+		this.todos.push(todo);
 	}
 
 	delTodo(index) {
-		this.todo.splice(index, 1);
+		this.todos.splice(index, 1);
 	}
 
 }
