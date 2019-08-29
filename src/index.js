@@ -3,6 +3,8 @@ import './main.scss';
 import Project from './modules/Project.js';
 import Todo from './modules/Todo.js';
 
+const projects = [];
+
 let date = new Date();
 date.setDate(10);
 date.setMonth(8);
