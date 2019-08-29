@@ -3,6 +3,8 @@
 $green: to left, #1fab89, #2e4137;
 $orange: to left, #ffb45e, #d04925;
 $red: to left, #ff4646, #af0404;
+$white: to bottom, #eae9e9, #d4d7dd;
+
 
 main {
   display: flex;
@@ -33,6 +35,20 @@ main {
   align-items: center;
   padding: 1rem;
 
+  button {
+    padding: .5rem;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    & span {
+      font-size: 1.5rem;
+      margin-right: .5rem;
+    }
+
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 1px;
+
+  }
 }
 
 .lateral-tab {
@@ -72,8 +88,8 @@ main {
 
 .main-view {
   grid-area: main;
-  border: 1px solid red;
   border-radius: 0 0 40px 0 0;
+  background-image: linear-gradient($white);
   &__green{
     background-image: linear-gradient($green);
   }
@@ -82,6 +98,26 @@ main {
   }
   &__red{
     background-image: linear-gradient($red);
+  }
+}
+
+
+.projects-view {
+  border: 1px solid;
+  height: 100%;
+  overflow: scroll;
+  & ul {
+    height: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    
+    & li {
+      border: 1px solid green;
+      height: 3rem;
+      margin: 1rem 0;
+    }
   }
 }
 
