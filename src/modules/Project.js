@@ -20,7 +20,7 @@ class Project {
 		return this.dueDate;
 	}
 	get getTodo() {
-		return this.todo;
+		return this.todos;
 	}
 
 	set setDueDate(newDate) {

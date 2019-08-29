@@ -1,14 +1,7 @@
 const DOMController = (() => {
 
-	let header = document.querySelector('header');
+	let mainView = document.querySelector('.main-view');
 
-	const updateSelectors = () => {
-		header = document.querySelector('header');
-	};
-
-	const updateListeners = () => {
-		header.addEvenlistener('click',);
-	};
 
 	const projectInput = () => {
 		return {
@@ -37,7 +30,22 @@ const DOMController = (() => {
 			<button class="creator-button">Create</button>
 		</div>`;
 	
-	const projectHTML = `
+	const projectHTML = (project) => {
+		const todosHtml = project.getTodo.map((item)=>{
+			return `
+				<li>
+				<div class="right">
+				<span>${item.getName}</span> <br>
+				<span>${item.getDescription}</span> <br>
+				<span>${item.getDueDate}</span> <br>
+				</div>
+				<div class="left">
+				<button> Done <span>☑</span></button>
+				</div>
+				</li>
+			`;
+		}).join('');
+		return `
 	<div class="project">
 		<div class="project__info">
 			<div><h1>Name</h1><br>
@@ -49,16 +57,7 @@ const DOMController = (() => {
 		</div>
 		<div class="project__todo">
 			<ul>
-				<li>
-					<div class="right">
-							<span>Name</span> <br>
-							<span>Description</span> <br>
-							<span>due date</span> <br>
-					</div>
-					<div class="left">
-						<button> Done <span>☑</span></button>
-					</div>
-				</li> 
+				${todosHtml} 
 			</ul>
 		</div>							
 		<input id="add-todo" type="checkbox" />
@@ -70,7 +69,7 @@ const DOMController = (() => {
 		<button class="creator-button">Create</button>
 		</div>
 	</div>`;
-
+	}
 	const projectViewHTML = `
 	<div class="projects-view">
 		<ul>
@@ -89,7 +88,12 @@ const DOMController = (() => {
 	</div>`;
 
 
-	return { projectInput, todoInput, header, updateListeners, updateSelectors};
+	const fillMainView = (content) => {
+		mainView.innerHTML = '';
+		mainView.innerHTML = content;
+	}
+
+	return { projectInput, todoInput, projectHTML, fillMainView};
 
 })();
 
