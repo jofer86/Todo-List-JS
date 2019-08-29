@@ -29,8 +29,7 @@ main {
 }
 
 .addition {
-  grid-area: top;
-  border: 1px solid lightgreen;
+  grid-area: top;  
   display: flex;
   align-items: center;
   padding: 1rem;
@@ -51,26 +50,27 @@ main {
   }
 }
 
-.lateral-tab {
-  border: 1px solid;
+.lateral-tab {  
   grid-area: left;
   background-image: linear-gradient(to bottom, #eae9e9, #d4d7dd);
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  border-radius: 0 0 0 40px;
   ul {
-    border: 1px solid blue;
+    border-right: 6px solid #222222;
     height: 100%;
-    width: 100%;
+    width: 95%;
     li{
       width: 80%;
-      background-color: orangered;
       margin-top: 15px;
       font-size: 22px;
       padding: 15px;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       border-radius: 8px;
+      
     }
   }
 }
@@ -88,7 +88,7 @@ main {
 
 .main-view {
   grid-area: main;
-  border-radius: 0 0 40px 0 0;
+  border-radius: 0 0 40px 0;
   background-image: linear-gradient($white);
   &__green{
     background-image: linear-gradient($green);
@@ -102,21 +102,26 @@ main {
 }
 
 
-.projects-view {
-  border: 1px solid;
+.projects-view {  
   height: 100%;
   overflow: scroll;
+  border-radius: 0 0 40px 0;
   & ul {
-    height: 100%;
+    max-height: 60vh;
     padding: 1rem;
     display: flex;
     flex-direction: column;
-    align-items: stretch;
-    
+    align-items: center;   
+    border-radius: 0 0 40px 0; 
     & li {
-      border: 1px solid green;
-      height: 3rem;
-      margin: 1rem 0;
+      width: 80%;
+      margin-top: 15px;
+      font-size: 22px;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      border-radius: 8px;
+      background-color: orangered;
     }
   }
 }
