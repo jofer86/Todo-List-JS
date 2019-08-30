@@ -1,6 +1,14 @@
 const DOMController = (() => {
 
 	let mainView = document.querySelector('.main-view');
+	const projectButton = document.querySelector('.creator-button');
+
+	const setupEventListener = () => {
+		if (projectButton) {
+			projectButton.addEventListener('click', projectCreate());
+		}
+	};
+	
 
 
 	const projectInput = () => {
@@ -91,9 +99,9 @@ const DOMController = (() => {
 	const fillMainView = (content) => {
 		mainView.innerHTML = '';
 		mainView.innerHTML = content;
-	}
+	};
 
-	return { projectInput, todoInput, projectHTML, fillMainView};
+	return { setupEventListener, projectInput, todoInput, projectHTML, fillMainView, projectInpHTML };
 
 })();
 
