@@ -1,23 +1,10 @@
 const DOMController = (() => {
 
-	let mainView = document.querySelector('.main-view');
-	const projectButton = document.querySelector('.creator-button');
-	const addProject = document.querySelector('.add_project');
-
-	const setupEventListener = () => {
-		addProject.addEventListener('click', () => fillMainView(projectInpHTML));
-		if (projectButton) {
-			projectButton.addEventListener('click', projectCreate);
-		}
-	};
-
-	const updateListener = () => {
-		addProject.addEventListener('click', () => {
-			setupEventListener();
-		});
-	};
+	let mainView = () => document.querySelector('.main-view');
+	const projectButton = () => document.querySelector('.creator-button');
+	const addProjectBtn = () => document.querySelector('.add_project');
 	
-
+	
 
 	const projectInput = () => {
 		return {
@@ -113,11 +100,12 @@ const DOMController = (() => {
 
 
 	const fillMainView = (content) => {
-		mainView.innerHTML = '';
-		mainView.innerHTML = content;
+		mainView().innerHTML = '';
+		mainView().innerHTML = content;
+		updateListenors();
 	};
 
-	return { setupEventListener, projectInput, todoInput, projectHTML, fillMainView, projectInpHTML, projectViewHTML };
+	return { projectInput, todoInput, projectHTML, fillMainView, projectInpHTML, projectViewHTML, addProjectBtn, updateListenors };
 
 })();
 

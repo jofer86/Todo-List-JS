@@ -5,6 +5,12 @@ import Todo from './modules/Todo.js';
 import DOMController from './modules/DOMController';
 
 const projects = [];
+const updateListenors = () => {
+	DOMController.addProjectBtn().addEventListener('click', () => {
+	DOMController.fillMainView(DOMController.projectInpHTML);
+	DOMController.projectButton().addEventListener('click', projectCreate);
+});
+}
 
 let date = new Date();
 date.setDate(10);
@@ -21,12 +27,11 @@ rDate.setFullYear(2019);
 const t1 = new Todo('Rock the world', 'We gon\' Rock the world', rDate);
 
 p1.addTodo(t1);
-
-console.log(p1.getTodo);
+projects.push(p1);
 
 
 DOMController.fillMainView(DOMController.projectViewHTML(projects));
-DOMController.setupEventListener();
+updateListenors();
 
 const projectCreate = () => {
 	const { name: proName,
