@@ -78,22 +78,30 @@ const DOMController = (() => {
 		</div>
 	</div>`;
 	}
-	const projectViewHTML = `
+	const projectViewHTML = (projects)=>{ 
+		let ps = projects.map((project)=>{
+			return `
+				<li>
+					<div class="project-info">
+					<div><span>Name:</span> ${project.getName}</div>
+					<div><span>category:</span> ${project.getCategory} </div>
+					<div><span>description:</span> ${project.getDescription} </div>
+					</div>
+					<div class="action-date">
+						<div><span>Due Date</span> ${project.getDueDate}</div>
+						<button class="go-button">Go to project <span>➤</span></button> 
+					</div>	
+				</li>
+			`;
+		}).join('');
+		if ( ps === '' ){ ps='<li>No Projects added Yet!!</li>'; }
+		return `
 	<div class="projects-view">
 		<ul>
-			<li>
-				<div class="project-info">
-						<div><span>Name:</span> blablabla</div>
-						<div><span>category:</span> blablabal, </div>
-						<div><span>description:</span> blablabla </div>
-				</div>
-				<div class="action-date">
-					<div><span>Due Date</span> 12/48/547452</div>
-					<button class="go-button">Go to project <span>➤</span></button> 
-				</div>
-			</li>
+			${ps}
 		</ul>
 	</div>`;
+	};
 
 
 	const fillMainView = (content) => {
@@ -101,7 +109,7 @@ const DOMController = (() => {
 		mainView.innerHTML = content;
 	};
 
-	return { setupEventListener, projectInput, todoInput, projectHTML, fillMainView, projectInpHTML };
+	return { setupEventListener, projectInput, todoInput, projectHTML, fillMainView, projectInpHTML, projectViewHTML };
 
 })();
 

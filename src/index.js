@@ -24,21 +24,16 @@ p1.addTodo(t1);
 
 console.log(p1.getTodo);
 
-if (projects.length === 0) {
-	DOMController.fillMainView(DOMController.projectInpHTML);
-	DOMController.setupEventListener();
-}
-	{
-		name: proName,
-		category,
-		description: proDescription,
-		date: proDate
-	} = DOMController.projectInput();
 
-projectCreate = () => {
+DOMController.fillMainView(DOMController.projectViewHTML(projects));
+DOMController.setupEventListener();
+
+//{ name: proName, category: proCategory, description: proDescription, date: proDate } = DOMController.projectInput();
+
+/*projectCreate = () => {
 	const pro = new Project(proName, category, proDescription, proDate);
 	projects.push(pro);
-}
+}*/
 //DOMController.fillMainView(DOMController.projectHTML(p1));
 
 
