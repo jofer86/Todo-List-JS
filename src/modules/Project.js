@@ -2,9 +2,9 @@ class Project {
 	constructor(name, category = 'default', description, dueDate = new Date()) {
 		this.name = name;
 		this.category = category;
-		this.description = description;
 		this.dueDate = dueDate;
 		this.updatePriority();
+		this.description = description;
 		this.todos = [];
 	}
 	get getName() {
@@ -36,9 +36,13 @@ class Project {
 		this.category = newCategory;
 	}
 
+	static validDate(date){
+		return Math.floor((date - new Date()) / 86400000);
+	}
+
 	updatePriority() {
-		const timeLeft = Math.floor((this.dueDate - new Date()) / 86400000);
-		console.log (timeLeft);
+		const timeLeft = Project.validDate(this.dueDate);
+		//console.log (timeLeft);
 		if (timeLeft <= 1){
 			this.priority = 'Red';
 		} else if (timeLeft > 1 && timeLeft <= 3) {
@@ -47,6 +51,8 @@ class Project {
 			this.priority = 'Green';
 		}		
 	}
+
+	
 	
 	addTodo(todo) {
 		if ((Math.floor(this.dueDate - todo.dueDate) <= 0) || Math.floor(todo.dueDate - new Date()) <= 0) {

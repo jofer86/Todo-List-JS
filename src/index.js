@@ -32,6 +32,9 @@ const projectCreate = () => {
 		category: proCategory,
 		description: proDescription,
 		date: proDate } = DOMController.projectInput();
+	console.log(date);
+	if (Project.validDate(date)<=0) return;
+
 	const pro = new Project(proName, proCategory, proDescription, proDate);
 	projects.push(pro);
 	console.log(projects);

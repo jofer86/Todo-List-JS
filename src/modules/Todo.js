@@ -22,7 +22,7 @@ class Todo {
 
 	updatePriority() {
 		const timeLeft = Math.floor((this.dueDate - new Date()) / 86400000);
-		console.log (timeLeft);
+		//console.log (timeLeft);
 		if (timeLeft <= 1){
 			this.priority = 'Red';
 		} else if (timeLeft > 1 && timeLeft <= 3) {
