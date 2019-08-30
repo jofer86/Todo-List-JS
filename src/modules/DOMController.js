@@ -2,11 +2,19 @@ const DOMController = (() => {
 
 	let mainView = document.querySelector('.main-view');
 	const projectButton = document.querySelector('.creator-button');
+	const addProject = document.querySelector('.add_project');
 
 	const setupEventListener = () => {
+		addProject.addEventListener('click', () => fillMainView(projectInpHTML));
 		if (projectButton) {
-			projectButton.addEventListener('click', projectCreate());
+			projectButton.addEventListener('click', projectCreate);
 		}
+	};
+
+	const updateListener = () => {
+		addProject.addEventListener('click', () => {
+			setupEventListener();
+		});
 	};
 	
 

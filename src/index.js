@@ -28,12 +28,17 @@ console.log(p1.getTodo);
 DOMController.fillMainView(DOMController.projectViewHTML(projects));
 DOMController.setupEventListener();
 
-//{ name: proName, category: proCategory, description: proDescription, date: proDate } = DOMController.projectInput();
-
-/*projectCreate = () => {
-	const pro = new Project(proName, category, proDescription, proDate);
+const projectCreate = () => {
+	const { name: proName,
+		category: proCategory,
+		description: proDescription,
+		date: proDate } = DOMController.projectInput();
+	const pro = new Project(proName, proCategory, proDescription, proDate);
 	projects.push(pro);
-}*/
+	console.log(projects);
+};
+
+
 //DOMController.fillMainView(DOMController.projectHTML(p1));
 
 
