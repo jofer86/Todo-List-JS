@@ -11,7 +11,7 @@ const DOMController = (() => {
 			name: document.querySelector('.project__name').value,
 			category: document.querySelector('.project__category').value,
 			description: document.querySelector('.project__description').value,
-			date: document.querySelector('.project__date').value			
+			date: new Date(document.querySelector('.project__date').value)		
 		};
 	};
 	
@@ -97,15 +97,30 @@ const DOMController = (() => {
 		</ul>
 	</div>`;
 	};
-
+	const updateListeners = (func) => {
+		DOMController.addProjectBtn().addEventListener('click', () => {
+			DOMController.fillMainView(DOMController.projectInpHTML);
+			projectButton().addEventListener('click', func);
+		});
+	};
 
 	const fillMainView = (content) => {
 		mainView().innerHTML = '';
 		mainView().innerHTML = content;
-		updateListenors();
+		updateListeners();
 	};
 
-	return { projectInput, todoInput, projectHTML, fillMainView, projectInpHTML, projectViewHTML, addProjectBtn, updateListenors };
+	return {
+		projectInput,
+		todoInput,
+		projectHTML,
+		fillMainView,
+		projectInpHTML,
+		projectViewHTML,
+		addProjectBtn,
+		updateListeners,
+		projectButton
+	};
 
 })();
 

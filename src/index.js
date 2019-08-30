@@ -5,12 +5,7 @@ import Todo from './modules/Todo.js';
 import DOMController from './modules/DOMController';
 
 const projects = [];
-const updateListenors = () => {
-	DOMController.addProjectBtn().addEventListener('click', () => {
-	DOMController.fillMainView(DOMController.projectInpHTML);
-	DOMController.projectButton().addEventListener('click', projectCreate);
-});
-}
+
 
 let date = new Date();
 date.setDate(10);
@@ -31,7 +26,6 @@ projects.push(p1);
 
 
 DOMController.fillMainView(DOMController.projectViewHTML(projects));
-updateListenors();
 
 const projectCreate = () => {
 	const { name: proName,
@@ -43,6 +37,7 @@ const projectCreate = () => {
 	console.log(projects);
 };
 
+DOMController.updateListeners(projectCreate);
 
 //DOMController.fillMainView(DOMController.projectHTML(p1));
 
