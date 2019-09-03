@@ -53,10 +53,10 @@ const DOMController = (() => {
 		return `
 	<div class="project">
 		<div class="project__info">
-			<div><h1>${project.getName}</h1><br>
-			<h2>${project.getCategory}</h2>
-			<p>${project.getDescription}</p><br>
-			<p>${project.getDueDate}</p>
+			<div><h1>Name: ${project.getName}</h1><br>
+			<h2> Category: ${project.getCategory}</h2>
+			<p> Description: ${project.getDescription}</p><br>
+			<p>Due Date: ${project.getDueDate}</p>
 			</div>
 			<button>Done <span>☑</span></button>
 		</div>
@@ -71,7 +71,7 @@ const DOMController = (() => {
 		<input type="text" placeholder="Name" class="todo__name">
 		<input type="text" placeholder="description" class="todo__description">
 		<input type="date" class="todo__date">
-		<button class="creator-button">Create</button>
+		<button class="add-todo">Create</button>
 		</div>
 	</div>`;
 	};
@@ -112,17 +112,17 @@ const DOMController = (() => {
 	const updateProjectAddListeners = (func) => {
 		DOMController.addProjectBtn().addEventListener('click', () => {
 			DOMController.fillMainView(DOMController.projectInpHTML);
-			projectButton().addEventListener('click', func);
+			projectButton().addEventListener('click', func);			
 		});
 	};
 
-	const updateProjectViewListeners = (projects) => {
+	const updateProjectViewListeners = (projects, addTodo) => {
 		DOMController.viewProjectBtns().forEach((btn, i) => {
 			btn.addEventListener('click', () => {
 				DOMController.fillMainView(DOMController.projectHTML(projects[i]));
-
+				addTodoBtn().addEventListener('click', addTodo);
 			});
-		})
+		});
 	};
 	/* Update Listeners        END////////////////////////*/
 

@@ -20,6 +20,10 @@ class Todo {
 		this.updatePriority();
 	}
 
+	static validDate(date){
+		return Math.floor((date - new Date()) / 86400000);
+	}
+
 	updatePriority() {
 		const timeLeft = Math.floor((this.dueDate - new Date()) / 86400000);
 		//console.log (timeLeft);

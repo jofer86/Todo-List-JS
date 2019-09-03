@@ -24,7 +24,19 @@ const projectCreate = () => {
 	projects.push(pro);
 	DOMController.fillMainView(DOMController.projectViewHTML(projects));
 	DOMController.updateProjectAddListeners(projectCreate);
-	DOMController.updateProjectViewListeners(projects);
+	DOMController.updateProjectViewListeners(projects, todoCreate);
+};
+
+const todoCreate = () => {
+	const { name: toName,
+		description: toDescription,
+		date: toDate } = DOMController.todoInput();
+	if (Todo.validDate(toDate, projectCreate.proDate) <= 0) {
+		alert('invalid date');
+		return;
+	}
+	const tod = new Todo(toName, toDescription, toDate);
+	Project.addTodo(tod);
 };
 
 DOMController.updateProjectAddListeners(projectCreate);
