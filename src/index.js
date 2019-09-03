@@ -7,9 +7,7 @@ import DOMController from './modules/DOMController';
 const projects = [];
 
 DOMController.fillMainView(DOMController.projectViewHTML(projects));
-DOMController.homeBtn().addEventListener('click', () => {
-	DOMController.fillMainView(DOMController.projectViewHTML(projects));
-});
+DOMController.updateHomeLinkListeners(projects);
 
 const projectCreate = () => {
 	const {
@@ -28,6 +26,7 @@ const projectCreate = () => {
 	DOMController.fillMainView(DOMController.projectViewHTML(projects));
 	DOMController.updateProjectAddListeners(projectCreate);
 	DOMController.updateProjectViewListeners(projects, todoCreate);
+	DOMController.updateHomeLinkListeners(projects, projectCreate);
 };
 
 const todoCreate = (project) => {

@@ -6,6 +6,7 @@ class Project {
 		this.updatePriority();
 		this.description = description;
 		this.todos = [];
+		this.status = false;
 	}
 	get getName() {
 		return this.name;
@@ -21,6 +22,10 @@ class Project {
 	}
 	get getTodo() {
 		return this.todos;
+	}
+
+	get getStatus() {
+		return this.status;
 	}
 	set setTodo(newTodo) {
 		this.todo = newTodo;
@@ -63,6 +68,15 @@ class Project {
 
 	delTodo(index) {
 		this.todos.splice(index, 1);
+	}
+
+	updateStatus() {
+		this.status = !this.status;
+		if (this.status) {
+			this.todos.forEach((todo) => todo.setStatus = true);
+		} else {
+			this.todos.forEach((todo) => todo.setStatus = false);
+		}
 	}
 
 }

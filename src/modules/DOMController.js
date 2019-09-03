@@ -37,7 +37,10 @@ const DOMController = (() => {
 		</div>`;
 
 	const projectHTML = (project) => {
-		const todosHtml = project.getTodo.map((item) => {
+		let statusBtn = project.getStatus ? '<button class="done-project"> Done <span>☑</span></button>' : '<button class="done-project"> Pending <span>⍻</span></button>';
+		let todosHtml = project.getTodo.map((item) => {
+			let statusBtn = item.getStatus ? '<button class="done-todo"> Done <span>☑</span></button>' :
+				'<button class="done-todo"> Pending <span>⍻</span></button>'
 			return `
 				<li>
 				<div class="right">
@@ -46,11 +49,12 @@ const DOMController = (() => {
 				<span>${item.getDueDate}</span> <br>
 				</div>
 				<div class="left">
-				<button class="done-todo"> Done <span>☑</span></button>
+				${statusBtn}
 				</div>
 				</li>
 			`;
 		}).join('');
+		todosHtml = todosHtml === '' ? '<li>no todo added yet ☺</li>' : todosHtml;
 		return `
 	<div class="project">
 		<div class="project__info">
@@ -59,7 +63,7 @@ const DOMController = (() => {
 			<p> Description: ${project.getDescription}</p><br>
 			<p>Due Date: ${project.getDueDate}</p>
 			</div>
-			<button>Done <span>☑</span></button>
+			${statusBtn}
 		</div>
 		<div class="project__todo">
 			<ul>
@@ -84,6 +88,7 @@ const DOMController = (() => {
 					<div><span>Name:</span> ${project.getName}</div>
 					<div><span>category:</span> ${project.getCategory} </div>
 					<div><span>description:</span> ${project.getDescription} </div>
+					<div><span>Status:</span> ${project.getStatus ? 'Done':'Pending'} </div>
 					</div>
 					<div class="action-date">
 						<div><span>Due Date</span> ${project.getDueDate}</div>
@@ -133,6 +138,14 @@ const DOMController = (() => {
 			addTodo(project);
 		});
 	};
+
+	const updateHomeLinkListeners = (projects, func) => {
+		homeBtn().addEventListener('click', () => {
+			fillMainView(projectViewHTML(projects));
+			updateProjectViewListeners(projects, func);
+		});
+	};
+
 	/* Update Listeners        END////////////////////////*/
 
 
@@ -148,6 +161,7 @@ const DOMController = (() => {
 		updateProjectAddListeners,
 		updateProjectViewListeners,
 		updateProjectListeners,
+		updateHomeLinkListeners,
 		projectButton,
 		viewProjectBtns,
 		homeBtn

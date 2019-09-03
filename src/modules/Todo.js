@@ -4,6 +4,7 @@ class Todo {
 		this.description = description;
 		this.dueDate = dueDate;
 		this.updatePriority();
+		this.status = false;
 	}
 	get getName() {
 		return this.name;
@@ -13,6 +14,14 @@ class Todo {
 	}
 	get getDueDate() {
 		return this.dueDate;
+	}
+
+	get getStatus() {
+		return this.status;
+	}
+
+	set setStatus(bol) {
+		this.status = bol;
 	}
 
 	set setDueDate(newDate) {
