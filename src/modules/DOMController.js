@@ -11,7 +11,7 @@ const DOMController = (() => {
 			name: document.querySelector('.project__name').value,
 			category: document.querySelector('.project__category').value,
 			description: document.querySelector('.project__description').value,
-			date: new Date(document.querySelector('.project__date').value)		
+			date: new Date(`${document.querySelector('.project__date').value}`)		
 		};
 	};
 	
@@ -34,7 +34,7 @@ const DOMController = (() => {
 		</div>`;
 	
 	const projectHTML = (project) => {
-		const todosHtml = project.getTodo.map((item)=>{
+		const todosHtml = project.getTodo.map((item) => {
 			return `
 				<li>
 				<div class="right">
@@ -72,7 +72,7 @@ const DOMController = (() => {
 		<button class="creator-button">Create</button>
 		</div>
 	</div>`;
-	}
+	};
 	const projectViewHTML = (projects)=>{ 
 		let ps = projects.map((project)=>{
 			return `
