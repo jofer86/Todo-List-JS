@@ -7,6 +7,9 @@ import DOMController from './modules/DOMController';
 const projects = [];
 
 DOMController.fillMainView(DOMController.projectViewHTML(projects));
+DOMController.homeBtn().addEventListener('click', () => {
+	DOMController.fillMainView(DOMController.projectViewHTML(projects));
+});
 
 const projectCreate = () => {
 	const {
@@ -33,7 +36,10 @@ const todoCreate = (project) => {
 		description: toDescription,
 		date: toDate
 	} = DOMController.todoInput();
-	if (Todo.validDate(toDate, projectCreate.proDate) <= 0) {
+	if (toName === "" ||
+		toDescription === "" ||
+		toDate.toDateString() === 'Invalid Date') return;
+	if (Todo.validDate(toDate, project.getDueDate) >= 0) {
 		alert('invalid date');
 		return;
 	}

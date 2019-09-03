@@ -5,6 +5,7 @@ const DOMController = (() => {
 	const addProjectBtn = () => document.querySelector('.add_project');
 	const viewProjectBtns = () => document.querySelectorAll('.go-button');
 	const addTodoBtn = () => document.querySelector('.add-todo');
+	const homeBtn = () => document.querySelector('.nav-link');
 
 
 
@@ -21,7 +22,7 @@ const DOMController = (() => {
 		return {
 			name: document.querySelector('.todo__name').value,
 			description: document.querySelector('.todo__description').value,
-			date: document.querySelector('.todo__date').value
+			date: new Date(document.querySelector('.todo__date').value)
 		};
 	};
 
@@ -121,7 +122,7 @@ const DOMController = (() => {
 			btn.addEventListener('click', () => {
 				DOMController.fillMainView(DOMController.projectHTML(projects[i]));
 				addTodoBtn().addEventListener('click', () => {
-					addTodo(projects[i])
+					addTodo(projects[i]);
 				});
 			});
 		});
@@ -148,7 +149,8 @@ const DOMController = (() => {
 		updateProjectViewListeners,
 		updateProjectListeners,
 		projectButton,
-		viewProjectBtns
+		viewProjectBtns,
+		homeBtn
 	};
 
 })();
