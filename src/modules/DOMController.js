@@ -112,7 +112,7 @@ const DOMController = (() => {
 	const updateProjectAddListeners = (func) => {
 		DOMController.addProjectBtn().addEventListener('click', () => {
 			DOMController.fillMainView(DOMController.projectInpHTML);
-			projectButton().addEventListener('click', func);			
+			projectButton().addEventListener('click', func);
 		});
 	};
 
@@ -120,8 +120,16 @@ const DOMController = (() => {
 		DOMController.viewProjectBtns().forEach((btn, i) => {
 			btn.addEventListener('click', () => {
 				DOMController.fillMainView(DOMController.projectHTML(projects[i]));
-				addTodoBtn().addEventListener('click', addTodo);
+				addTodoBtn().addEventListener('click', () => {
+					addTodo(projects[i])
+				});
 			});
+		});
+	};
+
+	const updateProjectListeners = (project, addTodo) => {
+		addTodoBtn().addEventListener('click', () => {
+			addTodo(project)
 		});
 	};
 	/* Update Listeners        END////////////////////////*/
@@ -138,6 +146,7 @@ const DOMController = (() => {
 		addProjectBtn,
 		updateProjectAddListeners,
 		updateProjectViewListeners,
+		updateProjectListeners,
 		projectButton,
 		viewProjectBtns
 	};

@@ -39,22 +39,22 @@ class Project {
 		this.category = newCategory;
 	}
 
-	static validDate(todoDate, projectDate){
-		return Math.floor((todoDate - projectDate) / 86400000);
+	static validDate(date) {
+		return Math.floor((date - new Date()) / 86400000);
 	}
 
 	updatePriority() {
 		const timeLeft = Project.validDate(this.dueDate);
 		//console.log (timeLeft);
-		if (timeLeft <= 1){
+		if (timeLeft <= 1) {
 			this.priority = 'Red';
 		} else if (timeLeft > 1 && timeLeft <= 3) {
 			this.priority = 'Orange';
 		} else {
 			this.priority = 'Green';
-		}		
-	}	
-	static addTodo(todo) {
+		}
+	}
+	addTodo(todo) {
 		if ((Math.floor(this.dueDate - todo.dueDate) <= 0) || Math.floor(todo.dueDate - new Date()) <= 0) {
 			return false;
 		}

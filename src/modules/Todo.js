@@ -20,20 +20,22 @@ class Todo {
 		this.updatePriority();
 	}
 
-	static validDate(date){
-		return Math.floor((date - new Date()) / 86400000);
+	static validDate(todoDate, projectDate) {
+		return Math.floor((todoDate - projectDate) / 86400000);
 	}
+
+
 
 	updatePriority() {
 		const timeLeft = Math.floor((this.dueDate - new Date()) / 86400000);
 		//console.log (timeLeft);
-		if (timeLeft <= 1){
+		if (timeLeft <= 1) {
 			this.priority = 'Red';
 		} else if (timeLeft > 1 && timeLeft <= 3) {
 			this.priority = 'Orange';
 		} else {
 			this.priority = 'Green';
-		}		
+		}
 	}
 }
 
