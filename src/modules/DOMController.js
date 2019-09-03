@@ -3,18 +3,20 @@ const DOMController = (() => {
 	let mainView = () => document.querySelector('.main-view');
 	const projectButton = () => document.querySelector('.creator-button');
 	const addProjectBtn = () => document.querySelector('.add_project');
-	
-	
+	const viewProjectBtns = () => document.querySelectorAll('.go-button');
+	const addTodoBtn = () => document.querySelector('.add-todo');
+
+
 
 	const projectInput = () => {
 		return {
 			name: document.querySelector('.project__name').value,
 			category: document.querySelector('.project__category').value,
 			description: document.querySelector('.project__description').value,
-			date: new Date(`${document.querySelector('.project__date').value}`)		
+			date: new Date(`${document.querySelector('.project__date').value}`)
 		};
 	};
-	
+
 	const todoInput = () => {
 		return {
 			name: document.querySelector('.todo__name').value,
@@ -32,7 +34,7 @@ const DOMController = (() => {
 			<input type="date" class="project__date">
 			<button class="creator-button">Create</button>
 		</div>`;
-	
+
 	const projectHTML = (project) => {
 		const todosHtml = project.getTodo.map((item) => {
 			return `
@@ -43,7 +45,7 @@ const DOMController = (() => {
 				<span>${item.getDueDate}</span> <br>
 				</div>
 				<div class="left">
-				<button> Done <span>☑</span></button>
+				<button class="add-todo"> Done <span>☑</span></button>
 				</div>
 				</li>
 			`;
@@ -51,10 +53,10 @@ const DOMController = (() => {
 		return `
 	<div class="project">
 		<div class="project__info">
-			<div><h1>Name</h1><br>
-			<h2>Category</h2>
-			<p>Description Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati sunt nam cum harum! Vel libero nulla eius. Est, non tempora?</p><br>
-			<p>Due Date!</p>
+			<div><h1>${project.getName}</h1><br>
+			<h2>${project.getCategory}</h2>
+			<p>${project.getDescription}</p><br>
+			<p>${project.getDueDate}</p>
 			</div>
 			<button>Done <span>☑</span></button>
 		</div>
@@ -73,8 +75,8 @@ const DOMController = (() => {
 		</div>
 	</div>`;
 	};
-	const projectViewHTML = (projects)=>{ 
-		let ps = projects.map((project)=>{
+	const projectViewHTML = (projects) => {
+		let ps = projects.map((project) => {
 			return `
 				<li>
 					<div class="project-info">
@@ -89,7 +91,9 @@ const DOMController = (() => {
 				</li>
 			`;
 		}).join('');
-		if ( ps === '' ){ ps='<li>No Projects added Yet!!</li>'; }
+		if (ps === '') {
+			ps = '<li>No Projects added Yet!!</li>';
+		}
 		return `
 	<div class="projects-view">
 		<ul>
@@ -97,18 +101,32 @@ const DOMController = (() => {
 		</ul>
 	</div>`;
 	};
-	const updateListeners = (func) => {
+
+
+	const fillMainView = (content) => {
+		mainView().innerHTML = '';
+		mainView().innerHTML = content;
+	};
+
+	/* Update Listeners        */
+	const updateProjectAddListeners = (func) => {
 		DOMController.addProjectBtn().addEventListener('click', () => {
 			DOMController.fillMainView(DOMController.projectInpHTML);
 			projectButton().addEventListener('click', func);
 		});
 	};
 
-	const fillMainView = (content) => {
-		mainView().innerHTML = '';
-		mainView().innerHTML = content;
-		updateListeners();
+	const updateProjectViewListeners = (projects) => {
+		DOMController.viewProjectBtns().forEach((btn, i) => {
+			btn.addEventListener('click', () => {
+				DOMController.fillMainView(DOMController.projectHTML(projects[i]));
+
+			});
+		})
 	};
+	/* Update Listeners        END////////////////////////*/
+
+
 
 	return {
 		projectInput,
@@ -118,12 +136,17 @@ const DOMController = (() => {
 		projectInpHTML,
 		projectViewHTML,
 		addProjectBtn,
-		updateListeners,
-		projectButton
+		updateProjectAddListeners,
+		updateProjectViewListeners,
+		projectButton,
+		viewProjectBtns
 	};
 
 })();
 
 
 
-export { DOMController as default };
+export {
+	DOMController as
+	default
+};

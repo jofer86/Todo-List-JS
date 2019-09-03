@@ -9,11 +9,12 @@ const projects = [];
 DOMController.fillMainView(DOMController.projectViewHTML(projects));
 
 const projectCreate = () => {
-	const { name: proName,
+	const {
+		name: proName,
 		category: proCategory,
 		description: proDescription,
-		date: proDate } = DOMController.projectInput();
-	console.log(Project.validDate(proDate));
+		date: proDate
+	} = DOMController.projectInput();
 	if (Project.validDate(proDate) <= 0) {
 		alert('Invalid date');
 		return;
@@ -21,16 +22,11 @@ const projectCreate = () => {
 
 	const pro = new Project(proName, proCategory, proDescription, proDate);
 	projects.push(pro);
-	console.log(projects);
+	DOMController.fillMainView(DOMController.projectViewHTML(projects));
+	DOMController.updateProjectAddListeners(projectCreate);
+	DOMController.updateProjectViewListeners(projects);
 };
 
-DOMController.updateListeners(projectCreate);
+DOMController.updateProjectAddListeners(projectCreate);
 
 //DOMController.fillMainView(DOMController.projectHTML(p1));
-
-
-
-
-
-
-
