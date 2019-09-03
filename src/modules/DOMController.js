@@ -45,7 +45,7 @@ const DOMController = (() => {
 				<span>${item.getDueDate}</span> <br>
 				</div>
 				<div class="left">
-				<button class="add-todo"> Done <span>☑</span></button>
+				<button class="done-todo"> Done <span>☑</span></button>
 				</div>
 				</li>
 			`;
