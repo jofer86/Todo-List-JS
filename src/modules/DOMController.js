@@ -130,7 +130,7 @@ const DOMController = (() => {
 
 	const updateProjectListeners = (project, addTodo) => {
 		addTodoBtn().addEventListener('click', () => {
-			addTodo(project)
+			addTodo(project);
 		});
 	};
 	/* Update Listeners        END////////////////////////*/
