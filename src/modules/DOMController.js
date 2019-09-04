@@ -126,13 +126,14 @@ const DOMController = (() => {
 		});
 	};
 
-	const updateProjectViewListeners = (projects, addTodo) => {
+	const updateProjectViewListeners = (projects, addTodo, updateProjectStatus) => {
 		DOMController.viewProjectBtns().forEach((btn, i) => {
 			btn.addEventListener('click', () => {
 				DOMController.fillMainView(DOMController.projectHTML(projects[i]));
 				addTodoBtn().addEventListener('click', () => {
 					addTodo(projects[i]);
 				});
+				pendingTodo().addEventListener('click', () => updateProjectStatus(projects[i]));
 			});
 		});
 	};
@@ -150,14 +151,10 @@ const DOMController = (() => {
 		});
 	};
 
-	// const changeStatus = (project, addTodo) => {
-	// 	pendingTodo().addEventListener('click', () => {
-	// 		console.log('hearing!');
-	// 		project.updateStatus();
-	// 		updateProjectListeners(project, addTodo);
-	// 	});
-	// };
-	
+	const updateStatusListeners = (func) => {
+		pendingTodo().addEventListener('click', func);
+	};
+
 
 	/* Update Listeners        END////////////////////////*/
 
@@ -175,10 +172,10 @@ const DOMController = (() => {
 		updateProjectViewListeners,
 		updateProjectListeners,
 		updateHomeLinkListeners,
+		updateStatusListeners,
 		projectButton,
 		viewProjectBtns,
 		homeBtn,
-		changeStatus
 	};
 
 })();

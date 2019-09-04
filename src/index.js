@@ -25,8 +25,9 @@ const projectCreate = () => {
 	projects.push(pro);
 	DOMController.fillMainView(DOMController.projectViewHTML(projects));
 	DOMController.updateProjectAddListeners(projectCreate);
-	DOMController.updateProjectViewListeners(projects, todoCreate);
+	DOMController.updateProjectViewListeners(projects, todoCreate, changeProjectStatus);
 	DOMController.updateHomeLinkListeners(projects, projectCreate);
+	//	DOMController.updateStatusListeners(changeProjectStatus);
 };
 
 const todoCreate = (project) => {
@@ -46,8 +47,14 @@ const todoCreate = (project) => {
 	project.addTodo(tod);
 	DOMController.fillMainView(DOMController.projectHTML(project));
 	DOMController.updateProjectListeners(project, todoCreate);
-	//DOMController.changeStatus(project, todoCreate);
+	DOMController.updateStatusListeners(changeProjectStatus);
 };
+
+const changeProjectStatus = (project) => {
+	project.updateStatus();
+	DOMController.fillMainView(DOMController.projectHTML(project));
+	DOMController.updateProjectListeners(project, todoCreate);
+}
 
 DOMController.updateProjectAddListeners(projectCreate);
 
