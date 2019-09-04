@@ -46,14 +46,15 @@ const todoCreate = (project) => {
 	const tod = new Todo(toName, toDescription, toDate);
 	project.addTodo(tod);
 	DOMController.fillMainView(DOMController.projectHTML(project));
-	DOMController.updateProjectListeners(project, todoCreate);
-	DOMController.updateStatusListeners(changeProjectStatus);
+	DOMController.updateProjectListeners(project, todoCreate, changeProjectStatus);
 };
 
 const changeProjectStatus = (project) => {
+	console.log(project);
 	project.updateStatus();
 	DOMController.fillMainView(DOMController.projectHTML(project));
-	DOMController.updateProjectListeners(project, todoCreate);
+	DOMController.updateProjectListeners(project, todoCreate, changeProjectStatus);
+	DOMController.updateStatusListeners(changeProjectStatus);
 }
 
 DOMController.updateProjectAddListeners(projectCreate);
