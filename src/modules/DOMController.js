@@ -6,6 +6,8 @@ const DOMController = (() => {
 	const viewProjectBtns = () => document.querySelectorAll('.go-button');
 	const addTodoBtn = () => document.querySelector('.add-todo');
 	const homeBtn = () => document.querySelector('.nav-link');
+	const pendingTodo = () => document.querySelector('.done-project');
+
 
 
 
@@ -40,7 +42,7 @@ const DOMController = (() => {
 		let statusBtn = project.getStatus ? '<button class="done-project"> Done <span>☑</span></button>' : '<button class="done-project"> Pending <span>⍻</span></button>';
 		let todosHtml = project.getTodo.map((item) => {
 			let statusBtn = item.getStatus ? '<button class="done-todo"> Done <span>☑</span></button>' :
-				'<button class="done-todo"> Pending <span>⍻</span></button>'
+				'<button class="done-todo"> Pending <span>⍻</span></button>';
 			return `
 				<li>
 				<div class="right">
@@ -114,6 +116,8 @@ const DOMController = (() => {
 		mainView().innerHTML = content;
 	};
 
+
+
 	/* Update Listeners        */
 	const updateProjectAddListeners = (func) => {
 		DOMController.addProjectBtn().addEventListener('click', () => {
@@ -146,6 +150,15 @@ const DOMController = (() => {
 		});
 	};
 
+	// const changeStatus = (project, addTodo) => {
+	// 	pendingTodo().addEventListener('click', () => {
+	// 		console.log('hearing!');
+	// 		project.updateStatus();
+	// 		updateProjectListeners(project, addTodo);
+	// 	});
+	// };
+	
+
 	/* Update Listeners        END////////////////////////*/
 
 
@@ -164,7 +177,8 @@ const DOMController = (() => {
 		updateHomeLinkListeners,
 		projectButton,
 		viewProjectBtns,
-		homeBtn
+		homeBtn,
+		changeStatus
 	};
 
 })();
