@@ -1,6 +1,6 @@
 const DOMController = (() => {
 
-	let mainView = () => document.querySelector('.main-view');
+	const mainView = () => document.querySelector('.main-view');
 	const projectButton = () => document.querySelector('.creator-button');
 	const addProjectBtn = () => document.querySelector('.add_project');
 	const viewProjectBtns = () => document.querySelectorAll('.go-button');
@@ -116,20 +116,29 @@ const DOMController = (() => {
 		mainView().innerHTML = content;
 	};
 
-
-
-	/* Update Listeners        */
+	// Add event listener to the "Add a Project" button
 	const updateProjectAddListeners = (func) => {
-		DOMController.addProjectBtn().addEventListener('click', () => {
-			DOMController.fillMainView(DOMController.projectInpHTML);
+		addProjectBtn().addEventListener('click', () => {
+			fillMainView(projectInpHTML);
 			projectButton().addEventListener('click', func);
 		});
 	};
 
+
+
+	// Get the view for the new list of projects
+	// update listeners for "go to project" button
+	// update listeners for "Home" link on the left panel
+	const getListProjectsView = (projects, todoCreate, updateProjectStatus) => {
+		fillMainView(projectViewHTML(projects));
+		updateProjectViewListeners(projects, todoCreate, updateProjectStatus);
+		homeBtn().addEventListener('click', () => getListProjectsView(projects, todoCreate, updateProjectStatus));
+	};
+
 	const updateProjectViewListeners = (projects, addTodo, updateProjectStatus) => {
-		DOMController.viewProjectBtns().forEach((btn, i) => {
+		viewProjectBtns().forEach((btn, i) => {
 			btn.addEventListener('click', () => {
-				DOMController.fillMainView(DOMController.projectHTML(projects[i]));
+				fillMainView(projectHTML(projects[i]));
 				addTodoBtn().addEventListener('click', () => {
 					addTodo(projects[i]);
 				});
@@ -140,45 +149,34 @@ const DOMController = (() => {
 		});
 	};
 
+
+	// get view for the modified project
+	// update listeners for todo create button
+	// update listeners for project status toggler button
+	const getProjectView = (project, addTodo, updateProjectStatus) => {
+		fillMainView(projectHTML(project));
+		updateProjectListeners(project, addTodo, updateProjectStatus);
+	};
+
+
 	const updateProjectListeners = (project, addTodo, updateProjectStatus) => {
 		addTodoBtn().addEventListener('click', () => {
 			addTodo(project);
 		});
-		updateStatusListeners(project, updateProjectStatus);
-	};
-
-	const updateHomeLinkListeners = (projects, func) => {
-		homeBtn().addEventListener('click', () => {
-			fillMainView(projectViewHTML(projects));
-			updateProjectViewListeners(projects, func);
-		});
-	};
-
-	const updateStatusListeners = (project, pStatus) => {
-		projectStatusBtn().addEventListener('click', () => pStatus(project));
+		projectStatusBtn().addEventListener('click', () => updateProjectStatus(project));
 	};
 
 
-	/* Update Listeners        END////////////////////////*/
+
 
 
 
 	return {
 		projectInput,
 		todoInput,
-		projectHTML,
-		fillMainView,
-		projectInpHTML,
-		projectViewHTML,
-		addProjectBtn,
 		updateProjectAddListeners,
-		updateProjectViewListeners,
-		updateProjectListeners,
-		updateHomeLinkListeners,
-		updateStatusListeners,
-		projectButton,
-		viewProjectBtns,
-		homeBtn,
+		getListProjectsView,
+		getProjectView
 	};
 
 })();

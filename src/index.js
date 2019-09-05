@@ -6,9 +6,6 @@ import DOMController from './modules/DOMController';
 
 const projects = [];
 
-DOMController.fillMainView(DOMController.projectViewHTML(projects));
-DOMController.updateHomeLinkListeners(projects);
-
 const projectCreate = () => {
 	const {
 		name: proName,
@@ -23,11 +20,11 @@ const projectCreate = () => {
 
 	const pro = new Project(proName, proCategory, proDescription, proDate);
 	projects.push(pro);
-	DOMController.fillMainView(DOMController.projectViewHTML(projects));
-	DOMController.updateProjectAddListeners(projectCreate);
-	DOMController.updateProjectViewListeners(projects, todoCreate, changeProjectStatus);
-	DOMController.updateHomeLinkListeners(projects, projectCreate);
-	//	DOMController.updateStatusListeners(changeProjectStatus);
+
+	// Get the view for the new list of projects
+	// update listeners for "go to project" button
+	// update listeners for "Home" link on the left panel
+	DOMController.getListProjectsView(projects, todoCreate, changeProjectStatus);
 };
 
 const todoCreate = (project) => {
@@ -45,18 +42,24 @@ const todoCreate = (project) => {
 	}
 	const tod = new Todo(toName, toDescription, toDate);
 	project.addTodo(tod);
-	DOMController.fillMainView(DOMController.projectHTML(project));
-	DOMController.updateProjectListeners(project, todoCreate, changeProjectStatus);
+
+	// get view for the modified project
+	// update listeners for todo create button
+	// update listeners for project status toggler button
+	DOMController.getProjectView(project, todoCreate, changeProjectStatus);
 };
 
 const changeProjectStatus = (project) => {
-	console.log(project);
 	project.updateStatus();
-	DOMController.fillMainView(DOMController.projectHTML(project));
-	DOMController.updateProjectListeners(project, todoCreate, changeProjectStatus);
-	DOMController.updateStatusListeners(changeProjectStatus);
+
+	// get view for the modified project
+	// update listeners for todo create button
+	// update listeners for project status toggler button
+	DOMController.getProjectView(project, todoCreate, changeProjectStatus);
 }
 
-DOMController.updateProjectAddListeners(projectCreate);
+// initial view rendering to show the list of the projects (intro)
+DOMController.getListProjectsView(projects, todoCreate, changeProjectStatus);
 
-//DOMController.fillMainView(DOMController.projectHTML(p1));
+// Add event listener to the "Add a Project" button 
+DOMController.updateProjectAddListeners(projectCreate);

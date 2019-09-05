@@ -60,7 +60,7 @@ class Project {
 		}
 	}
 	addTodo(todo) {
-		if ((Math.floor(this.dueDate - todo.dueDate) <= 0) || Math.floor(todo.dueDate - new Date()) <= 0) {
+		if (Math.floor(this.dueDate - todo.dueDate) <= 0 || Math.floor(todo.dueDate - new Date()) <= 0) {
 			return false;
 		}
 		this.todos.push(todo);
@@ -70,17 +70,16 @@ class Project {
 		this.todos.splice(index, 1);
 	}
 
+	// Change the status of the project
 	updateStatus() {
 		this.status = !this.status;
+		// propogate the state of the project on the related todos
 		if (this.status) {
-			this.todos.forEach((todo) => todo.setStatus = true);
+			this.todos.forEach((todo) => (todo.setStatus = true));
 		} else {
-			this.todos.forEach((todo) => todo.setStatus = false);
+			this.todos.forEach((todo) => (todo.setStatus = false));
 		}
 	}
-
 }
-
-
 
 export default Project;
