@@ -1,35 +1,45 @@
 @import 'reset.css';
 
-$green: to left, #1fab89, #2e4137;
-$orange: to left, #ffb45e, #d04925;
-$red: to left, #ff4646, #af0404;
-$white: to bottom, #eae9e9, #d4d7dd;
+$green: to left,
+#1fab89,
+#2e4137;
+$orange: to left,
+#ffb45e,
+#d04925;
+$red: to left,
+#ff4646,
+#af0404;
+$white: to bottom,
+#eae9e9,
+#d4d7dd;
 
 
 main {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: linear-gradient(to right bottom, #51dacf, #651086);  
-  height: 100vh;  
-};
+  background-image: linear-gradient(to right bottom, #51dacf, #651086);
+  height: 100vh;
+}
+
+;
 
 .appContainer {
   height: 80vh;
   width: 80vw;
   border-radius: 40px;
-  -webkit-box-shadow: 0px 0px 30px 8px rgba(0,0,0,.75);
-  -moz-box-shadow: 0px 0px 30px 8px rgba(0,0,0,.75);
-  box-shadow: 0px 0px 30px 8px rgba(0,0,0,.75);
+  -webkit-box-shadow: 0px 0px 30px 8px rgba(0, 0, 0, .75);
+  -moz-box-shadow: 0px 0px 30px 8px rgba(0, 0, 0, .75);
+  box-shadow: 0px 0px 30px 8px rgba(0, 0, 0, .75);
   display: grid;
   grid-template-columns: 1fr 3fr;
   grid-template-rows: 100px auto;
   grid-template-areas: "top top"
-                      "left main";
+    "left main";
 }
 
 .addition {
-  grid-area: top;  
+  grid-area: top;
   display: flex;
   align-items: center;
   padding: 1rem;
@@ -39,6 +49,7 @@ main {
     font-size: 1rem;
     display: flex;
     align-items: center;
+
     & span {
       font-size: 1.5rem;
       margin-right: .5rem;
@@ -50,7 +61,7 @@ main {
   }
 }
 
-.lateral-tab {  
+.lateral-tab {
   grid-area: left;
   background-image: linear-gradient(to bottom, #eae9e9, #d4d7dd);
   display: flex;
@@ -58,11 +69,13 @@ main {
   align-items: center;
   justify-content: center;
   border-radius: 0 0 0 40px;
+
   ul {
     border-right: 6px solid #222222;
     height: 100%;
     width: 95%;
-    li{
+
+    li {
       width: 80%;
       margin-top: 15px;
       font-size: 22px;
@@ -70,19 +83,20 @@ main {
       display: flex;
       justify-content: space-between;
       border-radius: 8px;
-      
+
     }
   }
 }
 
-.red{
+.red {
   background-image: linear-gradient($red);
 }
-.orange{
+
+.orange {
   background-image: linear-gradient($orange);
 }
 
-.green{
+.green {
   background-image: linear-gradient($green);
 }
 
@@ -92,30 +106,35 @@ main {
   background-image: linear-gradient($white);
   display: flex;
   justify-content: center;
-  align-items: center;  
-  &__green{
+  align-items: center;
+
+  &__green {
     background-image: linear-gradient($green);
   }
-  &__orange{
+
+  &__orange {
     background-image: linear-gradient($orange);
   }
-  &__red{
+
+  &__red {
     background-image: linear-gradient($red);
   }
 }
 
 
-.projects-view {  
+.projects-view {
   height: 100%;
   overflow: scroll;
   border-radius: 0 0 40px 0;
+
   & ul {
     max-height: 60vh;
     padding: 1rem;
     display: flex;
     flex-direction: column;
-    align-items: center;   
-    border-radius: 0 0 40px 0; 
+    align-items: center;
+    border-radius: 0 0 40px 0;
+
     & li {
       width: 80%;
       margin-top: 15px;
@@ -127,14 +146,15 @@ main {
       border-radius: 8px;
       background-color: orangered;
 
-      & > div {
+      &>div {
         font-size: 1.2rem;
         color: #9fe914;
         font-weight: bold;
       }
+
       .project-info {
-        
-        & > div {
+
+        &>div {
           display: flex;
           align-items: center;
         }
@@ -144,8 +164,8 @@ main {
         display: flex;
         flex-direction: column;
         align-items: center;
-        
-        & > div {
+
+        &>div {
           display: flex;
           align-items: center;
         }
@@ -157,12 +177,13 @@ main {
           justify-content: center;
           border-radius: 8px;
           margin-top: 10px;
+
           & span {
             font-size: 1.5rem;
             color: blueviolet;
           }
         }
-       
+
       }
 
       span {
@@ -175,89 +196,125 @@ main {
   }
 }
 
-.project{
+.project {
   background-color: orangered;
   width: 80%;
   padding: .5rem;
   border-radius: 10px;
-  &__info{
+
+  &__info {
     display: flex;
     align-items: center;
     padding: .5rem;
-    
-    & > :first-child {
+
+    &> :first-child {
       padding: 1rem;
     }
-    
+
     h1 {
       display: inline;
       font-size: 40px;
-      font-weight: bold;      
+      font-weight: bold;
     }
+
     h2 {
       display: inline;
       font-size: 25px;
       margin-top: 10px;
     }
+
     p {
       margin-top: 10px;
       font-size: 18px;
     }
-    button{
+
+    button {
       margin-top: 10px;
       padding: 5px;
       font-size: 14px;
       border-radius: 8px;
+
       & span {
         font-size: 1rem;
         font-weight: bolder;
         color: green;
       }
-    }    
+    }
   }
+
   &__todo {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 5px;
     margin-bottom: 5px;
+
     & ul {
       border: 1px solid;
       width: 80%;
+
       & li {
         padding: .5rem;
         display: flex;
-        align-items: center;
+        align-items: stretch;
         justify-content: space-between;
+        position: relative;
 
-        & > span {
-          font-size: 1rem;
+        &>div {
+          margin: auto 0;
+
+          span {
+            font-size: 1rem;
+            font-weight: 600;
+          }
+        }
+
+        .left>span {
           color: #d4d7dd;
-          font-weight: 600;
           margin-right: 1rem;
+        }
+
+        .close-btn {
+          position: absolute;
+          right: 0;
+          top: 0;
+          border-radius: 50%;
+          margin: 4px;
+          background-color: $white;
+          cursor: pointer;
+        }
+
+        .done-todo {
+
+
+          &>span {
+            font-size: 1rem;
+            font-weight: bolder;
+            color: green;
+          }
         }
       }
     }
 
-    button > span {
-      font-size: 1rem;
-      font-weight: bolder;
-      color: green;
-    }
+
   }
+
   &__creator {
     display: flex;
     flex-direction: column;
     align-items: center;
-    h1{
+
+    h1 {
       font-size: 35px;
       font-weight: bold;
       margin-bottom: 20px;
     }
+
     input {
       height: 30px;
       margin-bottom: 20px;
     }
+
     button {
       padding: 1rem;
       border-radius: 10px;
@@ -276,21 +333,25 @@ main {
   margin-top: 5px;
 }
 
-#add-todo:checked ~ .todo__creator {
+#add-todo:checked~.todo__creator {
   display: none;
 }
+
 .todo__creator {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: .5rem;
-  h1{
+
+  h1 {
     font-size: 35px;
     font-weight: bold;
   }
+
   input {
     height: 30px;
   }
+
   button {
     padding: .5rem;
     border-radius: 10px;
@@ -300,13 +361,4 @@ main {
 
 .hide {
   display: none;
-}
-
-.close-btn{
-  position: absolute;
-  right: 0;
-  top: 0;
-  border-radius: 50%;
-  padding: 4px;
-  background-color: $white;
 }

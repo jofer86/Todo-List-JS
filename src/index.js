@@ -24,7 +24,7 @@ const projectCreate = () => {
 	// Get the view for the new list of projects
 	// update listeners for "go to project" button
 	// update listeners for "Home" link on the left panel
-	DOMController.getListProjectsView(projects, todoCreate, changeProjectStatus, updateTodoStatus);
+	DOMController.getListProjectsView(projects, todoCreate, changeProjectStatus, updateTodoStatus, deleteTodo);
 };
 
 const todoCreate = (project) => {
@@ -46,7 +46,7 @@ const todoCreate = (project) => {
 	// get view for the modified project
 	// update listeners for todo create button
 	// update listeners for project status toggler button
-	DOMController.getProjectView(project, todoCreate, changeProjectStatus, updateTodoStatus);
+	DOMController.getProjectView(project, todoCreate, changeProjectStatus, updateTodoStatus, deleteTodo);
 };
 
 const changeProjectStatus = (project) => {
@@ -55,18 +55,22 @@ const changeProjectStatus = (project) => {
 	// get view for the modified project
 	// update listeners for todo create button
 	// update listeners for project status toggler button
-	DOMController.getProjectView(project, todoCreate, changeProjectStatus, updateTodoStatus);
+	DOMController.getProjectView(project, todoCreate, changeProjectStatus, updateTodoStatus, deleteTodo);
 };
 
 const updateTodoStatus = (project, index) => {
 	project.getTodo[index].updateStatus();
-	DOMController.getProjectView(project, todoCreate, changeProjectStatus, updateTodoStatus);
+	DOMController.getProjectView(project, todoCreate, changeProjectStatus, updateTodoStatus, deleteTodo);
 };
 
+const deleteTodo = (project, index) => {
+	project.delTodo(index);
+	DOMController.getProjectView(project, todoCreate, changeProjectStatus, updateTodoStatus, deleteTodo);
+}
 
 
 // initial view rendering to show the list of the projects (intro)
-DOMController.getListProjectsView(projects, todoCreate, changeProjectStatus, updateTodoStatus);
+DOMController.getListProjectsView(projects, todoCreate, changeProjectStatus, updateTodoStatus, deleteTodo);
 
 // Add event listener to the "Add a Project" button 
 DOMController.updateProjectAddListeners(projectCreate);

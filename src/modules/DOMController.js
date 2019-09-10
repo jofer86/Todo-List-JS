@@ -8,6 +8,7 @@ const DOMController = (() => {
 	const homeBtn = () => document.querySelector('.nav-link');
 	const projectStatusBtn = () => document.querySelector('.done-project');
 	const todoStatusBtn = () => document.querySelectorAll('.done-todo');
+	const tododeleteBtns = () => document.querySelectorAll('.close-btn');
 
 
 
@@ -53,8 +54,8 @@ const DOMController = (() => {
 				</div>
 				<div class="left">
 				${statusBtn}
-				<span class="close-btn">❌</span>
 				</div>
+				<span class="close-btn">❌</span>
 				</li>
 			`;
 		}).join('');
@@ -129,14 +130,14 @@ const DOMController = (() => {
 	// Get the view for the new list of projects
 	// update listeners for "go to project" button
 	// update listeners for "Home" link on the left panel
-	const getListProjectsView = (projects, todoCreate, updateProjectStatus, updateTodoStatus) => {
+	const getListProjectsView = (projects, todoCreate, updateProjectStatus, updateTodoStatus, deleteTodo) => {
 		fillMainView(projectViewHTML(projects));
 		//		updateProjectViewListeners(projects, todoCreate, updateProjectStatus);
 		viewProjectBtns().forEach((btn, i) => {
-			btn.addEventListener('click', () => getProjectView(projects[i], todoCreate, updateProjectStatus, updateTodoStatus));
+			btn.addEventListener('click', () => getProjectView(projects[i], todoCreate, updateProjectStatus, updateTodoStatus, deleteTodo));
 		});
 		homeBtn().addEventListener('click', function () {
-			getListProjectsView(projects, todoCreate, updateProjectStatus, updateTodoStatus);
+			getListProjectsView(projects, todoCreate, updateProjectStatus, updateTodoStatus, deleteTodo);
 		});
 	};
 
@@ -144,19 +145,22 @@ const DOMController = (() => {
 	// get view for the modified project
 	// update listeners for todo create button
 	// update listeners for project status toggler button
-	const getProjectView = (project, addTodo, updateProjectStatus, updateTodoStatus) => {
+	const getProjectView = (project, addTodo, updateProjectStatus, updateTodoStatus, deleteTodo) => {
 		fillMainView(projectHTML(project));
-		updateProjectListeners(project, addTodo, updateProjectStatus, updateTodoStatus);
+		updateProjectListeners(project, addTodo, updateProjectStatus, updateTodoStatus, deleteTodo);
 	};
 
-	const updateProjectListeners = (project, addTodo, updateProjectStatus, updateTodoStatus) => {
+	const updateProjectListeners = (project, addTodo, updateProjectStatus, updateTodoStatus, deleteTodo) => {
 		addTodoBtn().addEventListener('click', () => {
 			addTodo(project);
 		});
 		projectStatusBtn().addEventListener('click', () => updateProjectStatus(project));
 		todoStatusBtn().forEach((btn, index) => btn.addEventListener('click', () => {
-			updateTodoStatus(project, index);			
+			updateTodoStatus(project, index);
 		}));
+		tododeleteBtns().forEach((Btn, i) => Btn.addEventListener('click', () => {
+			deleteTodo(project, i);
+		}))
 	};
 
 
@@ -169,7 +173,7 @@ const DOMController = (() => {
 		todoInput,
 		updateProjectAddListeners,
 		getListProjectsView,
-		getProjectView		
+		getProjectView
 	};
 
 })();
