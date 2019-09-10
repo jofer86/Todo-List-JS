@@ -46,6 +46,11 @@ class Todo {
 			this.priority = 'Green';
 		}
 	}
+
+	updateStatus() {
+		this.status = !this.status;
+	}
+
 }
 
 export default Todo;

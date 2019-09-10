@@ -7,6 +7,7 @@ const DOMController = (() => {
 	const addTodoBtn = () => document.querySelector('.add-todo');
 	const homeBtn = () => document.querySelector('.nav-link');
 	const projectStatusBtn = () => document.querySelector('.done-project');
+	const todoStatusBtn = () => document.querySelectorAll('.done-todo');
 
 
 
@@ -124,18 +125,16 @@ const DOMController = (() => {
 		});
 	};
 
-
-
 	// Get the view for the new list of projects
 	// update listeners for "go to project" button
 	// update listeners for "Home" link on the left panel
-	const getListProjectsView = (projects, todoCreate, updateProjectStatus) => {
+	const getListProjectsView = (projects, todoCreate, updateProjectStatus, updateTodoStatus) => {
 		fillMainView(projectViewHTML(projects));
-		updateProjectViewListeners(projects, todoCreate, updateProjectStatus);
+		updateProjectViewListeners(projects, todoCreate, updateProjectStatus, updateTodoStatus);
 		homeBtn().addEventListener('click', () => getListProjectsView(projects, todoCreate, updateProjectStatus));
 	};
 
-	const updateProjectViewListeners = (projects, addTodo, updateProjectStatus) => {
+	const updateProjectViewListeners = (projects, addTodo, updateProjectStatus, updateTodoStatus) => {
 		viewProjectBtns().forEach((btn, i) => {
 			btn.addEventListener('click', () => {
 				fillMainView(projectHTML(projects[i]));
@@ -145,6 +144,9 @@ const DOMController = (() => {
 				projectStatusBtn().addEventListener('click', () => {
 					updateProjectStatus(projects[i])
 				});
+				todoStatusBtn().forEach((btn, index) => btn.addEventListener('click', () => {
+					updateTodoStatus(projects[i], index);
+				}));
 			});
 		});
 	};
