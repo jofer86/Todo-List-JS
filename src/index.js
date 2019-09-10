@@ -24,7 +24,7 @@ const projectCreate = () => {
 	// Get the view for the new list of projects
 	// update listeners for "go to project" button
 	// update listeners for "Home" link on the left panel
-	DOMController.getListProjectsView(projects, todoCreate, changeProjectStatus);
+	DOMController.getListProjectsView(projects, todoCreate, changeProjectStatus, updateTodoStatus);
 };
 
 const todoCreate = (project) => {
@@ -66,7 +66,7 @@ const updateTodoStatus = (project, index) => {
 
 
 // initial view rendering to show the list of the projects (intro)
-DOMController.getListProjectsView(projects, todoCreate, changeProjectStatus);
+DOMController.getListProjectsView(projects, todoCreate, changeProjectStatus, updateTodoStatus);
 
 // Add event listener to the "Add a Project" button 
 DOMController.updateProjectAddListeners(projectCreate);

@@ -47,12 +47,13 @@ const DOMController = (() => {
 			return `
 				<li>
 				<div class="right">
-				<span>${item.getName}</span> <br>
-				<span>${item.getDescription}</span> <br>
-				<span>${item.getDueDate}</span> <br>
+					<span>${item.getName}</span> <br>
+					<span>${item.getDescription}</span> <br>
+					<span>${item.getDueDate}</span> <br>					
 				</div>
 				<div class="left">
 				${statusBtn}
+				<span class="close-btn">❌</span>
 				</div>
 				</li>
 			`;
@@ -148,14 +149,13 @@ const DOMController = (() => {
 		updateProjectListeners(project, addTodo, updateProjectStatus, updateTodoStatus);
 	};
 
-
 	const updateProjectListeners = (project, addTodo, updateProjectStatus, updateTodoStatus) => {
 		addTodoBtn().addEventListener('click', () => {
 			addTodo(project);
 		});
 		projectStatusBtn().addEventListener('click', () => updateProjectStatus(project));
 		todoStatusBtn().forEach((btn, index) => btn.addEventListener('click', () => {
-			updateTodoStatus(project, index);
+			updateTodoStatus(project, index);			
 		}));
 	};
 
@@ -169,7 +169,7 @@ const DOMController = (() => {
 		todoInput,
 		updateProjectAddListeners,
 		getListProjectsView,
-		getProjectView
+		getProjectView		
 	};
 
 })();
