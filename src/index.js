@@ -27,12 +27,6 @@ const projectCreate = () => {
 	DOMController.getListProjectsView(projects, todoCreate, changeProjectStatus);
 };
 
-
-const updateTodoStatus = (project, index) => {
-	project.getTodo[index].updateStatus();
-	DOMController.getProjectView(project, todoCreate, changeProjectStatus, updateTodoStatus);
-};
-
 const todoCreate = (project) => {
 	const {
 		name: toName,
@@ -61,6 +55,11 @@ const changeProjectStatus = (project) => {
 	// get view for the modified project
 	// update listeners for todo create button
 	// update listeners for project status toggler button
+	DOMController.getProjectView(project, todoCreate, changeProjectStatus, updateTodoStatus);
+};
+
+const updateTodoStatus = (project, index) => {
+	project.getTodo[index].updateStatus();
 	DOMController.getProjectView(project, todoCreate, changeProjectStatus, updateTodoStatus);
 };
 

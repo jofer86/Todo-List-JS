@@ -130,24 +130,12 @@ const DOMController = (() => {
 	// update listeners for "Home" link on the left panel
 	const getListProjectsView = (projects, todoCreate, updateProjectStatus, updateTodoStatus) => {
 		fillMainView(projectViewHTML(projects));
-		updateProjectViewListeners(projects, todoCreate, updateProjectStatus, updateTodoStatus);
-		homeBtn().addEventListener('click', () => getListProjectsView(projects, todoCreate, updateProjectStatus));
-	};
-
-	const updateProjectViewListeners = (projects, addTodo, updateProjectStatus, updateTodoStatus) => {
+		//		updateProjectViewListeners(projects, todoCreate, updateProjectStatus);
 		viewProjectBtns().forEach((btn, i) => {
-			btn.addEventListener('click', () => {
-				fillMainView(projectHTML(projects[i]));
-				addTodoBtn().addEventListener('click', () => {
-					addTodo(projects[i]);
-				});
-				projectStatusBtn().addEventListener('click', () => {
-					updateProjectStatus(projects[i])
-				});
-				todoStatusBtn().forEach((btn, index) => btn.addEventListener('click', () => {
-					updateTodoStatus(projects[i], index);
-				}));
-			});
+			btn.addEventListener('click', () => getProjectView(projects[i], todoCreate, updateProjectStatus, updateTodoStatus));
+		});
+		homeBtn().addEventListener('click', function () {
+			getListProjectsView(projects, todoCreate, updateProjectStatus, updateTodoStatus);
 		});
 	};
 
@@ -155,17 +143,20 @@ const DOMController = (() => {
 	// get view for the modified project
 	// update listeners for todo create button
 	// update listeners for project status toggler button
-	const getProjectView = (project, addTodo, updateProjectStatus) => {
+	const getProjectView = (project, addTodo, updateProjectStatus, updateTodoStatus) => {
 		fillMainView(projectHTML(project));
-		updateProjectListeners(project, addTodo, updateProjectStatus);
+		updateProjectListeners(project, addTodo, updateProjectStatus, updateTodoStatus);
 	};
 
 
-	const updateProjectListeners = (project, addTodo, updateProjectStatus) => {
+	const updateProjectListeners = (project, addTodo, updateProjectStatus, updateTodoStatus) => {
 		addTodoBtn().addEventListener('click', () => {
 			addTodo(project);
 		});
 		projectStatusBtn().addEventListener('click', () => updateProjectStatus(project));
+		todoStatusBtn().forEach((btn, index) => btn.addEventListener('click', () => {
+			updateTodoStatus(project, index);
+		}));
 	};
 
 
