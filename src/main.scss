@@ -276,12 +276,28 @@ main {
 
         .left {
           width: 25%;
+          .edit-todo{
+            position: relative;
+            top:10px;
+            background-color: #d4d7dd;
+            padding: 4px;
+            cursor: pointer;
+          }
         }
 
         .inner-edit {
+          visibility: hidden;
           & input {
             width: 4rem;
           }
+        }
+
+        #edit-todo{
+          visibility: hidden;
+        }
+
+        #edit-todo:checked~.inner-edit {
+          visibility:visible;
         }
 
         .left>span {
@@ -383,4 +399,7 @@ main {
 
 .hide {
   display: none;
-}
+};
+
+
+

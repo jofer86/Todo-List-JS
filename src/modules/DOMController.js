@@ -55,15 +55,17 @@ const DOMController = (() => {
 				</div>
 				<div class="left">
 					${statusBtn}
-					<button class="edit-btn">Edit</button>
+					<input id="edit-todo" type="checkbox">			
+					<label for="edit-todo" class="edit-todo"> "Edit" </label>						
 				</div>
-				<span class="close-btn">❌</span>
-				<div class="inner-edit">
+				<span class="close-btn">❌</span>				
+				<div class="inner-edit">				
 					<input type="text" placeholder="Name" value="${item.getName}">
 					<input type="text" placeholder="description" value="${item.getDescription}">
 					<input type="date" value="${item.getDueDate.getYear()}-${item.getDueDate.getMonth()}-${item.getDueDate.getDate()}">
 					<button>Edit</button>
 				</div>
+								
 				</li>
 			`;
 		}).join('');
