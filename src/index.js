@@ -46,7 +46,7 @@ const todoCreate = (project) => {
 	// get view for the modified project
 	// update listeners for todo create button
 	// update listeners for project status toggler button
-	DOMController.getProjectView(project, todoCreate, changeProjectStatus, updateTodoStatus, deleteTodo);
+	DOMController.getProjectView(project, todoCreate, changeProjectStatus, updateTodoStatus, deleteTodo, editTodo);
 };
 
 const changeProjectStatus = (project) => {
@@ -55,22 +55,27 @@ const changeProjectStatus = (project) => {
 	// get view for the modified project
 	// update listeners for todo create button
 	// update listeners for project status toggler button
-	DOMController.getProjectView(project, todoCreate, changeProjectStatus, updateTodoStatus, deleteTodo);
+	DOMController.getProjectView(project, todoCreate, changeProjectStatus, updateTodoStatus, deleteTodo, editTodo);
 };
 
 const updateTodoStatus = (project, index) => {
 	project.getTodo[index].updateStatus();
-	DOMController.getProjectView(project, todoCreate, changeProjectStatus, updateTodoStatus, deleteTodo);
+	DOMController.getProjectView(project, todoCreate, changeProjectStatus, updateTodoStatus, deleteTodo, editTodo);
 };
 
 const deleteTodo = (project, index) => {
 	project.delTodo(index);
-	DOMController.getProjectView(project, todoCreate, changeProjectStatus, updateTodoStatus, deleteTodo);
-}
+	DOMController.getProjectView(project, todoCreate, changeProjectStatus, updateTodoStatus, deleteTodo, editTodo);
+};
+
+const editTodo = (project, index) => {
+	//project.editTodo(index);
+};
+
 
 
 // initial view rendering to show the list of the projects (intro)
-DOMController.getListProjectsView(projects, todoCreate, changeProjectStatus, updateTodoStatus, deleteTodo);
+DOMController.getListProjectsView(projects, todoCreate, changeProjectStatus, updateTodoStatus, deleteTodo, editTodo);
 
 // Add event listener to the "Add a Project" button 
 DOMController.updateProjectAddListeners(projectCreate);
