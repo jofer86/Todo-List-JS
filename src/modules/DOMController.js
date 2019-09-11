@@ -9,10 +9,19 @@ const DOMController = (() => {
 	const projectStatusBtn = () => document.querySelector('.done-project');
 	const todoStatusBtn = () => document.querySelectorAll('.done-todo');
 	const tododeleteBtns = () => document.querySelectorAll('.close-btn');
-	const todoEditBtns = () => document.querySelectorAll('.edit-btn');
+	const editTodoBtns = () => document.querySelectorAll('.edit-todo');
+	const innerEditdivs = () => document.querySelectorAll('.inner-edit');
 
 
 
+
+	const todoEditInput = (index) => {
+		return {
+			name: innerEditdivs()[index].querySelector('[name="name"]').value,
+			description: innerEditdivs()[index].querySelector('[name="description"]').value,
+			date: new Date(innerEditdivs()[index].querySelector('[name="date"]').value)
+		};
+	};
 
 	const projectInput = () => {
 		return {
@@ -55,15 +64,15 @@ const DOMController = (() => {
 				</div>
 				<div class="left">
 					${statusBtn}
-					<input id="edit-todo" type="checkbox">			
-					<label for="edit-todo" class="edit-todo"> "Edit" </label>						
+					<label for="edit-todo" class="edit-todo"> Edit </label>						
 				</div>
-				<span class="close-btn">❌</span>				
+				<span class="close-btn">❌</span>
+				<input id="edit-todo" type="checkbox">			
 				<div class="inner-edit">				
-					<input type="text" placeholder="Name" value="${item.getName}">
-					<input type="text" placeholder="description" value="${item.getDescription}">
-					<input type="date" value="${item.getDueDate.getYear()}-${item.getDueDate.getMonth()}-${item.getDueDate.getDate()}">
-					<button>Edit</button>
+					<input type="text" name="name" placeholder="Name" value="${item.getName}">
+					<input type="text" name="description" placeholder="description" value="${item.getDescription}">
+					<input type="date" name="date" value="${item.getDueDate.getFullYear()}-${item.getDueDate.getMonth()}-${item.getDueDate.getDate()}">
+					<button class="edit-todo">Edit</button>
 				</div>
 								
 				</li>
@@ -171,7 +180,7 @@ const DOMController = (() => {
 		tododeleteBtns().forEach((Btn, i) => Btn.addEventListener('click', () => {
 			deleteTodo(project, i);
 		}));
-		todoEditBtns().forEach((Btn, ind) => Btn.addEventListener('click', () => {
+		editTodoBtns().forEach((Btn, ind) => Btn.addEventListener('click', () => {
 			editTodo(project, ind);
 		}));
 	};
@@ -184,6 +193,7 @@ const DOMController = (() => {
 	return {
 		projectInput,
 		todoInput,
+		todoEditInput,
 		updateProjectAddListeners,
 		getListProjectsView,
 		getProjectView

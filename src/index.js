@@ -73,7 +73,12 @@ const editTodo = (project, index) => {
 		name,
 		description,
 		date
-	} = DOMController.getTodoInput();
+	} = DOMController.todoEditInput(projects.indexOf(project));
+
+	project.getTodo[index].setName = name;
+	project.getTodo[index].setDescription = description;
+	project.getTodo[index].setDueDate = date;
+	DOMController.getProjectView(project, todoCreate, changeProjectStatus, updateTodoStatus, deleteTodo, editTodo);
 };
 
 
