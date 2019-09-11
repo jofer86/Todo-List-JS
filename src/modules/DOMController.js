@@ -55,9 +55,15 @@ const DOMController = (() => {
 				</div>
 				<div class="left">
 					${statusBtn}
-					<button class="edit-btn" id=0>Edit</button>
+					<button class="edit-btn">Edit</button>
 				</div>
 				<span class="close-btn">❌</span>
+				<div class="inner-edit">
+					<input type="text" placeholder="Name" value="${item.getName}">
+					<input type="text" placeholder="description" value="${item.getDescription}">
+					<input type="date" value="${item.getDueDate.getYear()}-${item.getDueDate.getMonth()}-${item.getDueDate.getDate()}">
+					<button>Edit</button>
+				</div>
 				</li>
 			`;
 		}).join('');
@@ -139,7 +145,7 @@ const DOMController = (() => {
 			btn.addEventListener('click', () => getProjectView(projects[i], todoCreate, updateProjectStatus, updateTodoStatus, deleteTodo, editTodo));
 		});
 		homeBtn().addEventListener('click', function () {
-			getListProjectsView(projects, todoCreate, updateProjectStatus, updateTodoStatus, deleteTodo,editTodo);
+			getListProjectsView(projects, todoCreate, updateProjectStatus, updateTodoStatus, deleteTodo, editTodo);
 		});
 	};
 
@@ -164,12 +170,8 @@ const DOMController = (() => {
 			deleteTodo(project, i);
 		}));
 		todoEditBtns().forEach((Btn, ind) => Btn.addEventListener('click', () => {
-			if (todoEditBtn().id === 0) {
-				todoEditBtn().id = 1;
-			} else {
-				todoEditBtn().id = 0;
-			}
-		});
+			editTodo(project, ind);
+		}));
 	};
 
 

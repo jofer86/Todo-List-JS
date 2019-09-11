@@ -69,7 +69,11 @@ const deleteTodo = (project, index) => {
 };
 
 const editTodo = (project, index) => {
-	//project.editTodo(index);
+	const {
+		name,
+		description,
+		date
+	} = DOMController.getTodoInput();
 };
 
 

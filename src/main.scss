@@ -257,7 +257,7 @@ main {
         padding: .5rem;
         display: flex;
         align-items: stretch;
-        justify-content: space-between;
+        flex-wrap: wrap;
         position: relative;
 
         &>div {
@@ -266,6 +266,21 @@ main {
           span {
             font-size: 1rem;
             font-weight: 600;
+          }
+        }
+
+        .right {
+          width: 70%;
+          margin-bottom: .5rem;
+        }
+
+        .left {
+          width: 25%;
+        }
+
+        .inner-edit {
+          & input {
+            width: 4rem;
           }
         }
 
@@ -288,15 +303,17 @@ main {
         .done-todo {
           position: relative;
           top: 10px;
+
           &>span {
             font-size: 1rem;
             font-weight: bolder;
             color: green;
           }
         }
-        .edit-btn{
+
+        .edit-btn {
           position: relative;
-          top:10px;
+          top: 10px;
         }
       }
     }
