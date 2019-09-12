@@ -19,7 +19,7 @@ const DOMController = (() => {
 		return {
 			name: innerEditdivs()[index].querySelector('[name="name"]').value,
 			description: innerEditdivs()[index].querySelector('[name="description"]').value,
-			date: new Date(innerEditdivs()[index].querySelector('[name="date"]').value)
+			toDate: new Date(innerEditdivs()[index].querySelector('[name="date"]').value)
 		};
 	};
 

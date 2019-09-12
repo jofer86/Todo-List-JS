@@ -24,7 +24,7 @@ class Todo {
 	}
 
 	set setDueDate(newDate) {
-		this.date = newDate;
+		this.dueDate = newDate;
 		this.updatePriority();
 	}
 

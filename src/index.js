@@ -72,12 +72,19 @@ const editTodo = (project, index) => {
 	const {
 		name,
 		description,
-		date
-	} = DOMController.todoEditInput(projects.indexOf(project));
-	console.log(project.getTodo[index]);
+		toDate
+	} = DOMController.todoEditInput(index);
+	if (name === '' ||
+		description === '' ||
+		toDate.toDateString() === 'Invalid Date') return;
+	if (Todo.validDate(toDate, project.getDueDate) >= 0) {
+		alert('invalid date');
+		return;
+	}
+	console.log(Todo.validDate(toDate, project.getDueDate));
 	project.getTodo[index].setName = name;
 	project.getTodo[index].setDescription = description;
-	project.getTodo[index].setDueDate = date;
+	project.getTodo[index].setDueDate = toDate;
 	DOMController.getProjectView(project, todoCreate, changeProjectStatus, updateTodoStatus, deleteTodo, editTodo);
 };
 
