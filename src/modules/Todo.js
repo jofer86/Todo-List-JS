@@ -9,11 +9,23 @@ class Todo {
 	get getName() {
 		return this.name;
 	}
+
+	set setName(name) {
+		this.name = name;
+	}
 	get getDescription() {
 		return this.description;
 	}
+	set setDescription(description) {
+		this.description = description;
+	}
 	get getDueDate() {
 		return this.dueDate;
+	}
+
+	set setDueDate(newDate) {
+		this.date = newDate;
+		this.updatePriority();
 	}
 
 	get getStatus() {
@@ -24,10 +36,6 @@ class Todo {
 		this.status = bol;
 	}
 
-	set setDueDate(newDate) {
-		this.date = newDate;
-		this.updatePriority();
-	}
 
 	static validDate(todoDate, projectDate) {
 		return Math.floor((todoDate - projectDate) / 86400000);

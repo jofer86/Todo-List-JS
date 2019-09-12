@@ -52,7 +52,7 @@ const DOMController = (() => {
 
 	const projectHTML = (project) => {
 		let statusBtn = project.getStatus ? '<button class="done-project"> Done <span>☑</span></button>' : '<button class="done-project"> Pending <span>⍻</span></button>';
-		let todosHtml = project.getTodo.map((item) => {
+		let todosHtml = project.getTodo.map((item, index) => {
 			let statusBtn = item.getStatus ? '<button class="done-todo"> Done <span>☑</span></button>' :
 				'<button class="done-todo"> Pending <span>⍻</span></button>';
 			return `
@@ -66,14 +66,14 @@ const DOMController = (() => {
 					${statusBtn}										
 				</div>
 				<span class="close-btn">❌</span>
-				<input type="checkbox" id="expand-toggle" />
+				<input type="checkbox" id="expand-toggle${index}" />
 				<div class="inner-edit">				
 					<input type="text" name="name" placeholder="Name" value="${item.getName}">
 					<input type="text" name="description" placeholder="description" value="${item.getDescription}">
-					<input type="date" name="date" value="${item.getDueDate.getFullYear()}-${item.getDueDate.getMonth()}-${item.getDueDate.getDate()}">
+					<input type="date" name="date" value="${item.getDueDate.getFullYear()}-${("0"+item.getDueDate.getMonth()).slice(-2)}-${item.getDueDate.getDate()}">
 					<button class="edit-todo">Edit</button>
 				</div>
-				<label for="expand-toggle" id="expand-btn"> Edit </label>				
+				<label for="expand-toggle" id="expand-btn${index}"> Edit </label>				
 				</li>
 			`;
 		}).join('');

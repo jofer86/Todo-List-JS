@@ -1,414 +1,387 @@
 @import 'reset.css';
 
-$green: to left,
-#1fab89,
-#2e4137;
-$orange: to left,
-#ffb45e,
-#d04925;
-$red: to left,
-#ff4646,
-#af0404;
-$white: to bottom,
-#eae9e9,
-#d4d7dd;
-
+$green: to left, #1fab89, #2e4137;
+$orange: to left, #ffb45e, #d04925;
+$red: to left, #ff4646, #af0404;
+$white: to bottom, #eae9e9, #d4d7dd;
 
 main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-image: linear-gradient(to right bottom, #51dacf, #651086);
-  height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-image: linear-gradient(to right bottom, #51dacf, #651086);
+	height: 100vh;
 }
 
-;
-
 .appContainer {
-  height: 80vh;
-  width: 80vw;
-  border-radius: 40px;
-  -webkit-box-shadow: 0px 0px 30px 8px rgba(0, 0, 0, .75);
-  -moz-box-shadow: 0px 0px 30px 8px rgba(0, 0, 0, .75);
-  box-shadow: 0px 0px 30px 8px rgba(0, 0, 0, .75);
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  grid-template-rows: 100px auto;
-  grid-template-areas: "top top"
-    "left main";
+	height: 80vh;
+	width: 80vw;
+	border-radius: 40px;
+	-webkit-box-shadow: 0px 0px 30px 8px rgba(0, 0, 0, .75);
+	-moz-box-shadow: 0px 0px 30px 8px rgba(0, 0, 0, .75);
+	box-shadow: 0px 0px 30px 8px rgba(0, 0, 0, .75);
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+	grid-template-rows: 100px auto;
+	grid-template-areas: "top top" "left main";
 }
 
 .addition {
-  grid-area: top;
-  display: flex;
-  align-items: center;
-  padding: 1rem;
+	grid-area: top;
+	display: flex;
+	align-items: center;
+	padding: 1rem;
 
-  button {
-    padding: .5rem;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
+	button {
+		padding: .5rem;
+		font-size: 1rem;
+		display: flex;
+		align-items: center;
 
-    & span {
-      font-size: 1.5rem;
-      margin-right: .5rem;
-    }
+		& span {
+			font-size: 1.5rem;
+			margin-right: .5rem;
+		}
 
-    border-radius: 10px;
-    box-shadow: 0px 0px 5px 1px;
-
-  }
+		border-radius: 10px;
+		box-shadow: 0px 0px 5px 1px;
+	}
 }
 
 .lateral-tab {
-  grid-area: left;
-  background-image: linear-gradient(to bottom, #eae9e9, #d4d7dd);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0 0 0 40px;
+	grid-area: left;
+	background-image: linear-gradient(to bottom, #eae9e9, #d4d7dd);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border-radius: 0 0 0 40px;
 
-  ul {
-    border-right: 6px solid #222222;
-    height: 100%;
-    width: 95%;
+	ul {
+		border-right: 6px solid #222222;
+		height: 100%;
+		width: 95%;
 
-    li {
-      width: 80%;
-      margin-top: 15px;
-      font-size: 22px;
-      padding: 15px;
-      display: flex;
-      justify-content: space-between;
-      border-radius: 8px;
-
-    }
-  }
+		li {
+			width: 80%;
+			margin-top: 15px;
+			font-size: 22px;
+			padding: 15px;
+			display: flex;
+			justify-content: space-between;
+			border-radius: 8px;
+		}
+	}
 }
 
 .red {
-  background-image: linear-gradient($red);
+	background-image: linear-gradient($red);
 }
 
 .orange {
-  background-image: linear-gradient($orange);
+	background-image: linear-gradient($orange);
 }
 
 .green {
-  background-image: linear-gradient($green);
+	background-image: linear-gradient($green);
 }
 
 .main-view {
-  grid-area: main;
-  border-radius: 0 0 40px 0;
-  background-image: linear-gradient($white);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	grid-area: main;
+	border-radius: 0 0 40px 0;
+	background-image: linear-gradient($white);
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
-  &__green {
-    background-image: linear-gradient($green);
-  }
+	&__green {
+		background-image: linear-gradient($green);
+	}
 
-  &__orange {
-    background-image: linear-gradient($orange);
-  }
+	&__orange {
+		background-image: linear-gradient($orange);
+	}
 
-  &__red {
-    background-image: linear-gradient($red);
-  }
+	&__red {
+		background-image: linear-gradient($red);
+	}
 }
 
-
 .projects-view {
-  height: 100%;
-  overflow: scroll;
-  border-radius: 0 0 40px 0;
+	height: 100%;
+	overflow: scroll;
+	border-radius: 0 0 40px 0;
 
-  & ul {
-    max-height: 60vh;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 0 0 40px 0;
+	& ul {
+		max-height: 60vh;
+		padding: 1rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		border-radius: 0 0 40px 0;
 
-    & li {
-      width: 80%;
-      margin-top: 15px;
-      font-size: 22px;
-      padding: 15px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-radius: 8px;
-      background-color: orangered;
+		& li {
+			width: 80%;
+			margin-top: 15px;
+			font-size: 22px;
+			padding: 15px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			border-radius: 8px;
+			background-color: orangered;
 
-      &>div {
-        font-size: 1.2rem;
-        color: #9fe914;
-        font-weight: bold;
-      }
+			& > div {
+				font-size: 1.2rem;
+				color: #9fe914;
+				font-weight: bold;
+			}
 
-      .project-info {
+			.project-info {
+				& > div {
+					display: flex;
+					align-items: center;
+				}
+			}
 
-        &>div {
-          display: flex;
-          align-items: center;
-        }
-      }
+			.action-date {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
 
-      .action-date {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+				& > div {
+					display: flex;
+					align-items: center;
+				}
 
-        &>div {
-          display: flex;
-          align-items: center;
-        }
+				.go-button {
+					padding: .2rem;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					border-radius: 8px;
+					margin-top: 10px;
 
-        .go-button {
-          padding: .2rem;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 8px;
-          margin-top: 10px;
+					& span {
+						font-size: 1.5rem;
+						color: blueviolet;
+					}
+				}
+			}
 
-          & span {
-            font-size: 1.5rem;
-            color: blueviolet;
-          }
-        }
-
-      }
-
-      span {
-        font-size: 1rem;
-        color: #d4d7dd;
-        font-weight: 600;
-        margin-right: .5rem;
-      }
-    }
-  }
+			span {
+				font-size: 1rem;
+				color: #d4d7dd;
+				font-weight: 600;
+				margin-right: .5rem;
+			}
+		}
+	}
 }
 
 .project {
-  background-color: orangered;
-  width: 80%;
-  padding: .5rem;
-  border-radius: 10px;
+	background-color: orangered;
+	width: 80%;
+	padding: .5rem;
+	border-radius: 10px;
 
-  &__info {
-    display: flex;
-    align-items: center;
-    padding: .5rem;
+	&__info {
+		display: flex;
+		align-items: center;
+		padding: .5rem;
 
-    &> :first-child {
-      padding: 1rem;
-    }
+		& > :first-child {
+			padding: 1rem;
+		}
 
-    h1 {
-      display: inline;
-      font-size: 40px;
-      font-weight: bold;
-    }
+		h1 {
+			display: inline;
+			font-size: 40px;
+			font-weight: bold;
+		}
 
-    h2 {
-      display: inline;
-      font-size: 25px;
-      margin-top: 10px;
-    }
+		h2 {
+			display: inline;
+			font-size: 25px;
+			margin-top: 10px;
+		}
 
-    p {
-      margin-top: 10px;
-      font-size: 18px;
-    }
+		p {
+			margin-top: 10px;
+			font-size: 18px;
+		}
 
-    button {
-      margin-top: 10px;
-      padding: 5px;
-      font-size: 14px;
-      border-radius: 8px;
+		button {
+			margin-top: 10px;
+			padding: 5px;
+			font-size: 14px;
+			border-radius: 8px;
 
-      & span {
-        font-size: 1rem;
-        font-weight: bolder;
-        color: green;
-      }
-    }
-  }
+			& span {
+				font-size: 1rem;
+				font-weight: bolder;
+				color: green;
+			}
+		}
+	}
 
-  &__todo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 5px;
-    margin-bottom: 5px;
+	&__todo {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 5px;
+		margin-bottom: 5px;
 
-    & ul {
-      border: 1px solid;
-      width: 80%;
+		& ul {
+			border: 1px solid;
+			width: 80%;
 
-      & li {
-        padding: .5rem;
-        display: flex;
-        align-items: stretch;
-        flex-wrap: wrap;
-        position: relative;
+			& li {
+				padding: .5rem;
+				display: flex;
+				align-items: stretch;
+				flex-wrap: wrap;
+				position: relative;
 
-        &>div {
-          margin: auto 0;
+				& > div {
+					margin: auto 0;
 
-          span {
-            font-size: 1rem;
-            font-weight: 600;
-          }
-        }
+					span {
+						font-size: 1rem;
+						font-weight: 600;
+					}
+				}
 
-        .right {
-          width: 70%;
-          margin-bottom: .5rem;
-        }
+				.right {
+					width: 70%;
+					margin-bottom: .5rem;
+				}
 
-        .left {
-          width: 25%;
-          height: 4rem;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          align-items: center;
+				.left {
+					width: 25%;
+					height: 4rem;
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+					align-items: center;
+				}
 
+				.left > span {
+					color: #d4d7dd;
+					margin-right: 1rem;
+				}
 
-        }       
+				.close-btn {
+					position: absolute;
+					right: 0;
+					top: 0;
+					border-radius: 50%;
+					margin: 4px;
+					padding: 4px;
+					background-image: linear-gradient($white);
+					cursor: pointer;
+				}
 
-        .left>span {
-          color: #d4d7dd;
-          margin-right: 1rem;
-        }
+				.done-todo {
+					position: relative;
+					top: 10px;
 
-        .close-btn {
-          position: absolute;
-          right: 0;
-          top: 0;
-          border-radius: 50%;
-          margin: 4px;
-          padding: 4px;
-          background-image: linear-gradient($white);
-          cursor: pointer;
-        }
+					& > span {
+						font-size: 1rem;
+						font-weight: bolder;
+						color: green;
+					}
+				}
+			}
+		}
+	}
 
-        .done-todo {
-          position: relative;
-          top: 10px;
+	&__creator {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 
-          &>span {
-            font-size: 1rem;
-            font-weight: bolder;
-            color: green;
-          }
-        }
+		h1 {
+			font-size: 35px;
+			font-weight: bold;
+			margin-bottom: 20px;
+		}
 
-        .edit-btn {
-          position: relative;
-          top: 10px;
-        }
-      }
-    }
+		input {
+			height: 30px;
+			margin-bottom: 20px;
+		}
 
-
-  }
-
-  &__creator {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    h1 {
-      font-size: 35px;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
-
-    input {
-      height: 30px;
-      margin-bottom: 20px;
-    }
-
-    button {
-      padding: 1rem;
-      border-radius: 10px;
-      background-color: whitesmoke;
-    }
-  }
+		button {
+			padding: 1rem;
+			border-radius: 10px;
+			background-color: whitesmoke;
+		}
+	}
 }
 
 #add-todo {
-  display: none;
+	display: none;
 }
 
 .add-label {
-  padding: .3rem;
-  background: #ffb45e;
-  margin-top: 5px;
+	padding: .3rem;
+	background: #ffb45e;
+	margin-top: 5px;
 }
 
-#add-todo:checked~.todo__creator {
-  display: none;
+#add-todo:checked ~ .todo__creator {
+	display: none;
 }
 
 .todo__creator {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: .5rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: .5rem;
 
-  h1 {
-    font-size: 35px;
-    font-weight: bold;
-  }
+	h1 {
+		font-size: 35px;
+		font-weight: bold;
+	}
 
-  input {
-    height: 30px;
-  }
+	input {
+		height: 30px;
+	}
 
-  button {
-    padding: .5rem;
-    border-radius: 10px;
-    background-color: whitesmoke;
-  }
+	button {
+		padding: .5rem;
+		border-radius: 10px;
+		background-color: whitesmoke;
+	}
 }
 
 .hide {
-  display: none;
+	display: none;
 }
 
 .inner-edit {
-  display: none;
-  input{
-    width: 6rem;
-  }
+	display: none;
+	input {
+		width: 6rem;
+	}
 }
 
 #expand-toggle {
-  display: none;
+	display: none;
 }
 
 #expand-btn {
-  display: inline-block;
-  margin-top: 12px;
-  padding: 5px 11px;
-  background-color: #ff7;
-  border: 1px solid;
-  border-radius: 3px;
-  position: absolute;
-  right: 53px;
-  top: 37px;
+	display: inline-block;
+	padding: 5px 11px;
+	background-color: #ff7;
+	border: 1px solid;
+	border-radius: 3px;
+	position: absolute;
+	right: 53px;
+	top: 50px;
 }
 
-#expand-toggle:checked~*.inner-edit {
-  display:flex;
+#expand-toggle:checked ~ .inner-edit {
+	display: flex;
 }
