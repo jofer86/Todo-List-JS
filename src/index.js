@@ -77,7 +77,7 @@ const editTodo = (project, index) => {
 	if (name === '' ||
 		description === '' ||
 		toDate.toDateString() === 'Invalid Date') return;
-	if (Todo.validDate(toDate, project.getDueDate) >= 0) {
+	if (Todo.validDate(toDate, project.getDueDate) >= 0 || Todo.validDate(toDate, new Date()) <= 0) {
 		alert('invalid date');
 		return;
 	}

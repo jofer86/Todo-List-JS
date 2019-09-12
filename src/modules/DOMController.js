@@ -106,7 +106,7 @@ const DOMController = (() => {
 	const projectViewHTML = (projects) => {
 		let ps = projects.map((project) => {
 			return `
-				<li>
+				<li class="${project.priority}">
 					<div class="project-info">
 					<div><span>Name:</span> ${project.getName}</div>
 					<div><span>category:</span> ${project.getCategory} </div>
