@@ -367,21 +367,22 @@ main {
 	}
 }
 
-#expand-toggle {
-	display: none;
-}
-
-#expand-btn {
-	display: inline-block;
-	padding: 5px 11px;
-	background-color: #ff7;
-	border: 1px solid;
-	border-radius: 3px;
-	position: absolute;
-	right: 53px;
-	top: 50px;
-}
-
-#expand-toggle:checked ~ .inner-edit {
+@for $i from 0 through 20 {
+  #expand-toggle#{$i} {
+    display: none;
+  }  
+  #expand-btn#{$i} {
+    display: inline-block;
+    padding: 5px 11px;
+    background-color: #ff7;
+    border: 1px solid;
+    border-radius: 3px;
+    position: absolute;
+    right: 53px;
+    top: 50px;
+  }
+  #expand-toggle#{$i}:checked ~ .inner-edit {
 	display: flex;
+  }
+
 }

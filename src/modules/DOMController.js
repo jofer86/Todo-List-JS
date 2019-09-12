@@ -73,7 +73,7 @@ const DOMController = (() => {
 					<input type="date" name="date" value="${item.getDueDate.getFullYear()}-${("0"+item.getDueDate.getMonth()).slice(-2)}-${item.getDueDate.getDate()}">
 					<button class="edit-todo">Edit</button>
 				</div>
-				<label for="expand-toggle" id="expand-btn${index}"> Edit </label>				
+				<label for="expand-toggle${index}" id="expand-btn${index}"> Edit </label>				
 				</li>
 			`;
 		}).join('');
