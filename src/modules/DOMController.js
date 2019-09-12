@@ -11,6 +11,9 @@ const DOMController = (() => {
 	const tododeleteBtns = () => document.querySelectorAll('.close-btn');
 	const editTodoBtns = () => document.querySelectorAll('.edit-todo');
 	const innerEditdivs = () => document.querySelectorAll('.inner-edit');
+	const urgentBtn = () => document.querySelector('.nav-urgent');
+	const importantBtn = () => document.querySelector('.nav-important');
+	const closeBtn = () => document.querySelector('.nav-close');
 
 
 
@@ -79,7 +82,7 @@ const DOMController = (() => {
 		}).join('');
 		todosHtml = todosHtml === '' ? '<li>no todo added yet ☺</li>' : todosHtml;
 		return `
-	<div class="project">
+	<div class="project ${project.getPriority}">
 		<div class="project__info">
 			<div><h1>Name: ${project.getName}</h1><br>
 			<h2> Category: ${project.getCategory}</h2>
@@ -156,6 +159,10 @@ const DOMController = (() => {
 		});
 		homeBtn().addEventListener('click', function () {
 			getListProjectsView(projects, todoCreate, updateProjectStatus, updateTodoStatus, deleteTodo, editTodo);
+		});
+		urgentBtn().addEventListener('click', () => {
+			const urgentPj = projects.filter((e) => e.getPriority === 'Red');
+			getListProjectsView(urgentPj, todoCreate, updateProjectStatus, updateTodoStatus, deleteTodo, editTodo);
 		});
 	};
 

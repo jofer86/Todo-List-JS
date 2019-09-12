@@ -1,4 +1,5 @@
 class Project {
+
 	constructor(name, category = 'default', description, dueDate = new Date()) {
 		this.name = name;
 		this.category = category;
@@ -8,6 +9,7 @@ class Project {
 		this.todos = [];
 		this.status = false;
 	}
+
 	get getName() {
 		return this.name;
 	}
@@ -46,6 +48,10 @@ class Project {
 
 	static validDate(date) {
 		return Math.floor((date - new Date()) / 86400000);
+	}
+
+	get getPriority() {
+		return this.priority;
 	}
 
 	updatePriority() {
