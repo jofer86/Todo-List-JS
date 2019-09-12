@@ -282,29 +282,8 @@ main {
           justify-content: space-between;
           align-items: center;
 
-          .edit-todo {
-            background-color: #d4d7dd;
-            padding: 4px;
-            cursor: pointer;
-            user-select: none;
-          }
-        }
 
-        .inner-edit {
-          visibility: hidden;
-
-          & input {
-            width: 4rem;
-          }
-        }
-
-        #edit-todo {
-          visibility: hidden;
-        }
-
-        #edit-todo:checked~.inner-edit {
-          visibility: visible;
-        }
+        }       
 
         .left>span {
           color: #d4d7dd;
@@ -407,4 +386,29 @@ main {
   display: none;
 }
 
-;
+.inner-edit {
+  display: none;
+  input{
+    width: 6rem;
+  }
+}
+
+#expand-toggle {
+  display: none;
+}
+
+#expand-btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 5px 11px;
+  background-color: #ff7;
+  border: 1px solid;
+  border-radius: 3px;
+  position: absolute;
+  right: 53px;
+  top: 37px;
+}
+
+#expand-toggle:checked~*.inner-edit {
+  display:flex;
+}
