@@ -14,6 +14,7 @@ const DOMController = (() => {
 	const urgentBtn = () => document.querySelector('.nav-urgent');
 	const importantBtn = () => document.querySelector('.nav-important');
 	const closeBtn = () => document.querySelector('.nav-close');
+	const red = () => document.querySelectorAll('.Red');
 
 
 
@@ -161,8 +162,10 @@ const DOMController = (() => {
 			getListProjectsView(projects, todoCreate, updateProjectStatus, updateTodoStatus, deleteTodo, editTodo);
 		});
 		urgentBtn().addEventListener('click', () => {
-			const urgentPj = projects.filter((e) => e.getPriority === 'Red');
-			getListProjectsView(urgentPj, todoCreate, updateProjectStatus, updateTodoStatus, deleteTodo, editTodo);
+			red().forEach((ele) => {
+				
+			});
+			getListProjectsView(projects, todoCreate, updateProjectStatus, updateTodoStatus, deleteTodo, editTodo);
 		});
 	};
 
