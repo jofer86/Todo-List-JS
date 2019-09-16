@@ -81,7 +81,6 @@ const editTodo = (project, index) => {
 		alert('invalid date');
 		return;
 	}
-	console.log(Todo.validDate(toDate, project.getDueDate));
 	project.getTodo[index].setName = name;
 	project.getTodo[index].setDescription = description;
 	project.getTodo[index].setDueDate = toDate;

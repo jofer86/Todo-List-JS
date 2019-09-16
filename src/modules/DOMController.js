@@ -1,5 +1,4 @@
 const DOMController = (() => {
-
 	const mainView = () => document.querySelector('.main-view');
 	const projectButton = () => document.querySelector('.creator-button');
 	const addProjectBtn = () => document.querySelector('.add_project');
@@ -14,10 +13,7 @@ const DOMController = (() => {
 	const urgentBtn = () => document.querySelector('.nav-urgent');
 	const importantBtn = () => document.querySelector('.nav-important');
 	const closeBtn = () => document.querySelector('.nav-close');
-	const red = () => document.querySelectorAll('.Red');
-
-
-
+	//	const red = () => document.querySelectorAll('.Red');
 
 	const todoEditInput = (index) => {
 		return {
@@ -55,11 +51,15 @@ const DOMController = (() => {
 		</div>`;
 
 	const projectHTML = (project) => {
-		let statusBtn = project.getStatus ? '<button class="done-project"> Done <span>☑</span></button>' : '<button class="done-project"> Pending <span>⍻</span></button>';
-		let todosHtml = project.getTodo.map((item, index) => {
-			let statusBtn = item.getStatus ? '<button class="done-todo"> Done <span>☑</span></button>' :
-				'<button class="done-todo"> Pending <span>⍻</span></button>';
-			return `
+		let statusBtn = project.getStatus
+			? '<button class="done-project"> Done <span>☑</span></button>'
+			: '<button class="done-project"> Pending <span>⍻</span></button>';
+		let todosHtml = project.getTodo
+			.map((item, index) => {
+				let statusBtn = item.getStatus
+					? '<button class="done-todo"> Done <span>☑</span></button>'
+					: '<button class="done-todo"> Pending <span>⍻</span></button>';
+				return `
 				<li>
 				<div class="right">
 					<span>${item.getName}</span> <br>
@@ -74,13 +74,16 @@ const DOMController = (() => {
 				<div class="inner-edit">				
 					<input type="text" name="name" placeholder="Name" value="${item.getName}">
 					<input type="text" name="description" placeholder="description" value="${item.getDescription}">
-					<input type="date" name="date" value="${item.getDueDate.getFullYear()}-${("0"+item.getDueDate.getMonth()).slice(-2)}-${item.getDueDate.getDate()}">
+					<input type="date" name="date" value="${item.getDueDate.getFullYear()}-${('0' + item.getDueDate.getMonth()).slice(
+					-2
+				)}-${item.getDueDate.getDate()}">
 					<button class="edit-todo">Edit</button>
 				</div>
 				<label for="expand-toggle${index}" id="expand-btn${index}"> Edit </label>				
 				</li>
 			`;
-		}).join('');
+			})
+			.join('');
 		todosHtml = todosHtml === '' ? '<li>no todo added yet ☺</li>' : todosHtml;
 		return `
 	<div class="project ${project.getPriority}">
@@ -108,14 +111,15 @@ const DOMController = (() => {
 	</div>`;
 	};
 	const projectViewHTML = (projects) => {
-		let ps = projects.map((project) => {
-			return `
+		let ps = projects
+			.map((project) => {
+				return `
 				<li class="${project.priority}">
 					<div class="project-info">
 					<div><span>Name:</span> ${project.getName}</div>
 					<div><span>category:</span> ${project.getCategory} </div>
 					<div><span>description:</span> ${project.getDescription} </div>
-					<div><span>Status:</span> ${project.getStatus ? 'Done':'Pending'} </div>
+					<div><span>Status:</span> ${project.getStatus ? 'Done' : 'Pending'} </div>
 					</div>
 					<div class="action-date">
 						<div><span>Due Date</span> ${project.getDueDate}</div>
@@ -123,7 +127,8 @@ const DOMController = (() => {
 					</div>	
 				</li>
 			`;
-		}).join('');
+			})
+			.join('');
 		if (ps === '') {
 			ps = '<li>No Projects added Yet!!</li>';
 		}
@@ -134,7 +139,6 @@ const DOMController = (() => {
 		</ul>
 	</div>`;
 	};
-
 
 	const fillMainView = (content) => {
 		mainView().innerHTML = '';
@@ -156,19 +160,43 @@ const DOMController = (() => {
 		fillMainView(projectViewHTML(projects));
 		//		updateProjectViewListeners(projects, todoCreate, updateProjectStatus);
 		viewProjectBtns().forEach((btn, i) => {
-			btn.addEventListener('click', () => getProjectView(projects[i], todoCreate, updateProjectStatus, updateTodoStatus, deleteTodo, editTodo));
+			btn.addEventListener('click', () =>
+				getProjectView(projects[i], todoCreate, updateProjectStatus, updateTodoStatus, deleteTodo, editTodo)
+			);
 		});
-		homeBtn().addEventListener('click', function () {
+		homeBtn().addEventListener('click', function() {
 			getListProjectsView(projects, todoCreate, updateProjectStatus, updateTodoStatus, deleteTodo, editTodo);
 		});
 		urgentBtn().addEventListener('click', () => {
-			red().forEach((ele) => {
-				
-			});
-			getListProjectsView(projects, todoCreate, updateProjectStatus, updateTodoStatus, deleteTodo, editTodo);
+			const urgentPj = projects.filter((e) => e.getPriority === 'Red');
+			getListFilteredProject(urgentPj, todoCreate, updateProjectStatus, updateTodoStatus, deleteTodo, editTodo);
+		});
+		importantBtn().addEventListener('click', () => {
+			const importantPj = projects.filter((e) => e.getPriority === 'Orange');
+			getListFilteredProject(importantPj, todoCreate, updateProjectStatus, updateTodoStatus, deleteTodo, editTodo);
+		});
+		closeBtn().addEventListener('click', () => {
+			const closePj = projects.filter((e) => e.getPriority === 'Green');
+			getListFilteredProject(closePj, todoCreate, updateProjectStatus, updateTodoStatus, deleteTodo, editTodo);
 		});
 	};
 
+	const getListFilteredProject = (
+		projects,
+		todoCreate,
+		updateProjectStatus,
+		updateTodoStatus,
+		deleteTodo,
+		editTodo
+	) => {
+		fillMainView(projectViewHTML(projects));
+		//		updateProjectViewListeners(projects, todoCreate, updateProjectStatus);
+		viewProjectBtns().forEach((btn, i) => {
+			btn.addEventListener('click', () =>
+				getProjectView(projects[i], todoCreate, updateProjectStatus, updateTodoStatus, deleteTodo, editTodo)
+			);
+		});
+	};
 
 	// get view for the modified project
 	// update listeners for todo create button
@@ -183,21 +211,22 @@ const DOMController = (() => {
 			addTodo(project);
 		});
 		projectStatusBtn().addEventListener('click', () => updateProjectStatus(project));
-		todoStatusBtn().forEach((btn, index) => btn.addEventListener('click', () => {
-			updateTodoStatus(project, index);
-		}));
-		tododeleteBtns().forEach((Btn, i) => Btn.addEventListener('click', () => {
-			deleteTodo(project, i);
-		}));
-		editTodoBtns().forEach((Btn, ind) => Btn.addEventListener('click', () => {
-			editTodo(project, ind);
-		}));
+		todoStatusBtn().forEach((btn, index) =>
+			btn.addEventListener('click', () => {
+				updateTodoStatus(project, index);
+			})
+		);
+		tododeleteBtns().forEach((Btn, i) =>
+			Btn.addEventListener('click', () => {
+				deleteTodo(project, i);
+			})
+		);
+		editTodoBtns().forEach((Btn, ind) =>
+			Btn.addEventListener('click', () => {
+				editTodo(project, ind);
+			})
+		);
 	};
-
-
-
-
-
 
 	return {
 		projectInput,
@@ -207,12 +236,6 @@ const DOMController = (() => {
 		getListProjectsView,
 		getProjectView
 	};
-
 })();
 
-
-
-export {
-	DOMController as
-	default
-};
+export { DOMController as default };
