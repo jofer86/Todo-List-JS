@@ -1,13 +1,13 @@
 class Project {
 
-	constructor(name, category = 'default', description, dueDate = new Date()) {
+	constructor(name, category = 'default', description, dueDate = new Date(), status = false) {
 		this.name = name;
 		this.category = category;
 		this.dueDate = dueDate;
 		this.updatePriority();
 		this.description = description;
 		this.todos = [];
-		this.status = false;
+		this.status = status;
 	}
 
 	get getName() {

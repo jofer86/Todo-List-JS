@@ -1,10 +1,10 @@
 class Todo {
-	constructor(name, description, dueDate = new Date()) {
+	constructor(name, description, dueDate = new Date(), status = false) {
 		this.name = name;
 		this.description = description;
 		this.dueDate = dueDate;
 		this.updatePriority();
-		this.status = false;
+		this.status = status;
 	}
 	get getName() {
 		return this.name;

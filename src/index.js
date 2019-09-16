@@ -4,7 +4,18 @@ import Project from './modules/Project.js';
 import Todo from './modules/Todo.js';
 import DOMController from './modules/DOMController';
 
-const projects = JSON.parse(localStorage.getItem('projects')) || [];
+let projects = [];
+if (localStorage.getItem('projects')) {
+	projects = JSON.parse(localStorage.getItem('projects')).map((proj) => {
+		const project = new Project(proj.name, proj.category, proj.description, new Date(Date.parse(proj.dueDate)), proj.status);
+		proj.todos.forEach((todo) => {
+			let tod = new Todo(todo.name, todo.description, new Date(Date.parse(todo.dueDate)), todo.status);
+			project.addTodo(tod);
+		});
+		return project;
+	});
+}
+
 
 const projectCreate = () => {
 	const {
@@ -19,10 +30,10 @@ const projectCreate = () => {
 	}
 
 	const pro = new Project(proName, proCategory, proDescription, proDate);
-  projects.push(pro);
-  console.log(projects)
-  localStorage.setItem('projects', JSON.stringify(projects));
-  
+	projects.push(pro);
+
+	localStorage.setItem('projects', JSON.stringify(projects));
+
 	// Get the view for the new list of projects
 	// update listeners for "go to project" button
 	// update listeners for "Home" link on the left panel
@@ -43,8 +54,9 @@ const todoCreate = (project) => {
 		return;
 	}
 	const tod = new Todo(toName, toDescription, toDate);
-  project.addTodo(tod);
-  localStorage.setItem('projects', JSON.stringify(projects));
+	project.addTodo(tod);
+	console.log(JSON.stringify(projects));
+	localStorage.setItem('projects', JSON.stringify(projects));
 
 	// get view for the modified project
 	// update listeners for todo create button
@@ -57,20 +69,20 @@ const changeProjectStatus = (project) => {
 
 	// get view for the modified project
 	// update listeners for todo create button
-  // update listeners for project status toggler button
-  localStorage.setItem('project', JSON.stringify(projects));
+	// update listeners for project status toggler button
+	localStorage.setItem('projects', JSON.stringify(projects));
 	DOMController.getProjectView(project, todoCreate, changeProjectStatus, updateTodoStatus, deleteTodo, editTodo);
 };
 
 const updateTodoStatus = (project, index) => {
-  project.getTodo[index].updateStatus();
-  localStorage.setItem('project', JSON.stringify(projects));
-  DOMController.getProjectView(project, todoCreate, changeProjectStatus, updateTodoStatus, deleteTodo, editTodo);  
+	project.getTodo[index].updateStatus();
+	localStorage.setItem('projects', JSON.stringify(projects));
+	DOMController.getProjectView(project, todoCreate, changeProjectStatus, updateTodoStatus, deleteTodo, editTodo);
 };
 
 const deleteTodo = (project, index) => {
-  project.delTodo(index);
-  localStorage.setItem('project', JSON.stringify(projects));
+	project.delTodo(index);
+	localStorage.setItem('projects', JSON.stringify(projects));
 	DOMController.getProjectView(project, todoCreate, changeProjectStatus, updateTodoStatus, deleteTodo, editTodo);
 };
 
@@ -89,8 +101,8 @@ const editTodo = (project, index) => {
 	}
 	project.getTodo[index].setName = name;
 	project.getTodo[index].setDescription = description;
-  project.getTodo[index].setDueDate = toDate;
-  localStorage.setItem('project', JSON.stringify(projects));
+	project.getTodo[index].setDueDate = toDate;
+	localStorage.setItem('projects', JSON.stringify(projects));
 	DOMController.getProjectView(project, todoCreate, changeProjectStatus, updateTodoStatus, deleteTodo, editTodo);
 };
 
