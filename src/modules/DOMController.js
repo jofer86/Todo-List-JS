@@ -51,14 +51,14 @@ const DOMController = (() => {
 		</div>`;
 
 	const projectHTML = (project) => {
-		let statusBtn = project.getStatus
-			? '<button class="done-project"> Done <span>☑</span></button>'
-			: '<button class="done-project"> Pending <span>⍻</span></button>';
+		let statusBtn = project.getStatus ?
+			'<button class="done-project"> Done <span>☑</span></button>' :
+			'<button class="done-project"> Pending <span>⍻</span></button>';
 		let todosHtml = project.getTodo
 			.map((item, index) => {
-				let statusBtn = item.getStatus
-					? '<button class="done-todo"> Done <span>☑</span></button>'
-					: '<button class="done-todo"> Pending <span>⍻</span></button>';
+				let statusBtn = item.getStatus ?
+					'<button class="done-todo"> Done <span>☑</span></button>' :
+					'<button class="done-todo"> Pending <span>⍻</span></button>';
 				return `
 				<li>
 				<div class="right">
@@ -75,8 +75,8 @@ const DOMController = (() => {
 					<input type="text" name="name" placeholder="Name" value="${item.getName}">
 					<input type="text" name="description" placeholder="description" value="${item.getDescription}">
 					<input type="date" name="date" value="${item.getDueDate.getFullYear()}-${('0' + item.getDueDate.getMonth()).slice(
-					-2
-				)}-${item.getDueDate.getDate()}">
+		-2
+	)}-${item.getDueDate.getDate()}">
 					<button class="edit-todo">Edit</button>
 				</div>
 				<label for="expand-toggle${index}" id="expand-btn${index}"> Edit </label>				
@@ -164,7 +164,7 @@ const DOMController = (() => {
 				getProjectView(projects[i], todoCreate, updateProjectStatus, updateTodoStatus, deleteTodo, editTodo)
 			);
 		});
-		homeBtn().addEventListener('click', function() {
+		homeBtn().addEventListener('click', function () {
 			getListProjectsView(projects, todoCreate, updateProjectStatus, updateTodoStatus, deleteTodo, editTodo);
 		});
 		urgentBtn().addEventListener('click', () => {
@@ -238,4 +238,7 @@ const DOMController = (() => {
 	};
 })();
 
-export { DOMController as default };
+export {
+	DOMController as
+	default
+};

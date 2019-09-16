@@ -35,7 +35,6 @@ class Project {
 
 	set setDueDate(newDate) {
 		if (Math.floor(newDate - new Date()) <= 0) {
-			console.log('invalid date');
 			return false;
 		}
 		this.date = newDate;
