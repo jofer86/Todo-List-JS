@@ -19,11 +19,11 @@
         "no-param-reassign": 0,
         "eol-last": 0,
         "no-return-assign": 0,
-        "import/no-named-as-default-member": 0,
-        "import/no-named-as-default": 0,
+        "import/no-named-as-default-member": "off",
+        "import/no-named-as-default": "off",
         "max-len": "off",
         "no-use-before-define": "off",
-        "eslint-disable no-alert": 0,
+        "eslint-disable no-alert": "off",
         "no-unused-vars":"off",
         "no-alert":"off"
     }
