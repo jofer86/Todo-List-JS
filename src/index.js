@@ -27,6 +27,11 @@ const projectCreate = () => {
     return;
   }
 
+  if ([proName, proCategory, proDescription].some((e) => e.length === 0 || e.match(/^\s+$/))) {
+    alert('Empty Form');
+    return;
+  }
+
   const pro = new Project(proName, proCategory.length === 0 ? 'default' : proCategory, proDescription, proDate);
   projects.push(pro);
 
@@ -44,6 +49,10 @@ const todoCreate = (project) => {
   if (toName === '' || toDescription === '' || toDate.toDateString() === 'Invalid Date') return;
   if (Todo.validDate(toDate, project.getDueDate) >= 0) {
     alert('invalid date');
+    return;
+  }
+  if ([toName, toDescription].some((e) => e.length === 0 || e.match(/^\s+$/))) {
+    alert('Empty Form');
     return;
   }
   const tod = new Todo(toName, toDescription, toDate);
@@ -78,7 +87,7 @@ const editTodo = (project, index) => {
     toDate,
   } = DOMController.todoEditInput(index);
   if (name === '' || description === '' || toDate.toDateString() === 'Invalid Date') return;
-  if (Todo.validDate(toDate, project.getDueDate) >= 0 || Todo.validDate(toDate, new Date()) <= 0) {
+  if (Todo.validDate(toDate, project.getDueDate) >= 0 || Todo.validDate(toDate, new Date()) < 0) {
     alert('invalid date');
     return;
   }

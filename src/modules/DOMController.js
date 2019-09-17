@@ -66,7 +66,7 @@ const DOMController = (() => {
         <div class="inner-edit">
         <input type="text" name="name" placeholder="Name" value="${item.getName}">
         <input type="text" name="description" placeholder="description" value="${item.getDescription}">
-        <input type="date" name="date" value="${item.getDueDate.getFullYear()}-${('0'.concat(item.getDueDate.getMonth() + 1)).slice(-2, -1)}-${item.getDueDate.getDate()}">
+        <input type="date" name="date" value="${item.getDueDate.getFullYear()}-${(`0${(item.getDueDate.getMonth() + 1)}`).slice(-2)}-${item.getDueDate.getDate()}">
         <button class="edit-todo">Edit</button>
         </div>
         <label for="expand-toggle${index}" id="expand-btn${index}"> Edit </label>

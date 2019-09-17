@@ -221,7 +221,6 @@ main {
 		}
 
 		h2 {
-			display: inline;
 			font-size: 1.5rem;
 			margin-top: .7rem;
 		}
@@ -259,7 +258,6 @@ main {
 			overflow-y: scroll;
 
 			& li {
-				height: 4rem;
 				padding: .5rem;
 				display: flex;
 				align-items: stretch;
@@ -404,7 +402,7 @@ main {
 		border-radius: 3px;
 		position: absolute;
 		right: 53px;
-		top: 50px;
+		top: 60px;
 	}
 
 	#expand-toggle#{$i}:checked~.inner-edit {
