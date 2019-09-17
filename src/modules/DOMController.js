@@ -15,13 +15,13 @@ const DOMController = (() => {
   const closeBtn = () => document.querySelector('.nav-close');
   const defaultBtn = () => document.querySelector('.nav-default');
 
-  const todoEditInput = (index) => (
-    {
+  const todoEditInput = (index) => {
+    return {
       name: innerEditdivs()[index].querySelector('[name="name"]').value,
       description: innerEditdivs()[index].querySelector('[name="description"]').value,
       toDate: new Date(innerEditdivs()[index].querySelector('[name="date"]').value),
-    }
-  );
+    };
+  };
 
 
   const projectInput = () => ({
