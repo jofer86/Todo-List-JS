@@ -1,5 +1,3 @@
-/* eslint-disable no-alert */
-// eslint-disable-next-line no-unused-vars
 import _ from 'lodash';
 import './main.scss';
 import Project from './modules/Project';
