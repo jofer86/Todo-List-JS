@@ -82,10 +82,8 @@ class Project {
     this.todos.splice(index, 1);
   }
 
-  // Change the status of the project
   updateStatus() {
     this.status = !this.status;
-    // propogate the state of the project on the related todos
     if (this.status) {
       this.todos.forEach((todo) => (todo.setStatus = true));
     } else {

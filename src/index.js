@@ -32,9 +32,6 @@ const projectCreate = () => {
 
   localStorage.setItem('projects', JSON.stringify(projects));
 
-  // Get the view for the new list of projects
-  // update listeners for "go to project" button
-  // update listeners for "Home" link on the left panel
   DOMController.getListProjectsView(projects, todoCreate, changeProjectStatus, updateTodoStatus, deleteTodo);
 };
 
@@ -52,19 +49,12 @@ const todoCreate = (project) => {
   const tod = new Todo(toName, toDescription, toDate);
   project.addTodo(tod);
   localStorage.setItem('projects', JSON.stringify(projects));
-
-  // get view for the modified project
-  // update listeners for todo create button
-  // update listeners for project status toggler button
   DOMController.getProjectView(project, todoCreate, changeProjectStatus, updateTodoStatus, deleteTodo, editTodo);
 };
 
 const changeProjectStatus = (project) => {
   project.updateStatus();
 
-  // get view for the modified project
-  // update listeners for todo create button
-  // update listeners for project status toggler button
   localStorage.setItem('projects', JSON.stringify(projects));
   DOMController.getProjectView(project, todoCreate, changeProjectStatus, updateTodoStatus, deleteTodo, editTodo);
 };
@@ -99,8 +89,6 @@ const editTodo = (project, index) => {
   DOMController.getProjectView(project, todoCreate, changeProjectStatus, updateTodoStatus, deleteTodo, editTodo);
 };
 
-// initial view rendering to show the list of the projects (intro)
 DOMController.getListProjectsView(projects, todoCreate, changeProjectStatus, updateTodoStatus, deleteTodo, editTodo);
 
-// Add event listener to the "Add a Project" button
 DOMController.updateProjectAddListeners(projectCreate);

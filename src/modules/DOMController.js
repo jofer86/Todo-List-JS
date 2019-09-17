@@ -23,7 +23,6 @@ const DOMController = (() => {
     };
   };
 
-
   const projectInput = () => ({
     name: document.querySelector('.project__name').value,
     category: document.querySelector('.project__category').value,
@@ -53,7 +52,7 @@ const DOMController = (() => {
       .map((item, index) => {
         const statusBtn = item.getStatus ? '<button class="done-todo"> Done <span>☑</span></button>' : '<button class="done-todo"> Pending <span>⍻</span></button>';
         return `
-        <li>
+        <li class="${item.priority}">
         <div class="right">
         <span>${item.getName}</span> <br>
         <span>${item.getDescription}</span> <br>
@@ -133,7 +132,6 @@ const DOMController = (() => {
     mainView().innerHTML = content;
   };
 
-  // Add event listener to the "Add a Project" button
   const updateProjectAddListeners = (func) => {
     addProjectBtn().addEventListener('click', () => {
       fillMainView(projectInpHTML);
@@ -141,9 +139,6 @@ const DOMController = (() => {
     });
   };
 
-  // Get the view for the new list of projects
-  // update listeners for "go to project" button
-  // update listeners for "Home" link on the left panel
   const getListProjectsView = (projects, todoCreate, updateProjectStatus, updateTodoStatus, deleteTodo, editTodo) => {
     fillMainView(projectViewHTML(projects));
     viewProjectBtns().forEach((btn, i) => {
@@ -181,9 +176,6 @@ const DOMController = (() => {
     });
   };
 
-  // get view for the modified project
-  // update listeners for todo create button
-  // update listeners for project status toggler button
   const getProjectView = (project, addTodo, updateProjectStatus, updateTodoStatus, deleteTodo, editTodo) => {
     fillMainView(projectHTML(project));
     updateProjectListeners(project, addTodo, updateProjectStatus, updateTodoStatus, deleteTodo, editTodo);
