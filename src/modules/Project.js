@@ -1,5 +1,5 @@
 class Project {
-  constructor(name, category = 'default', description, dueDate = new Date(), status = false) {
+  constructor(name, category, description, dueDate = new Date(), status = false) {
     this.name = name;
     this.category = category;
     this.dueDate = dueDate;
@@ -71,8 +71,7 @@ class Project {
   }
 
   addTodo(todo) {
-    if (Math.floor(this.dueDate - todo.dueDate) <= 0
-      || Math.floor(todo.dueDate - new Date()) <= 0) {
+    if (Math.floor(this.dueDate - todo.dueDate) <= 0 || Math.floor(todo.dueDate - new Date()) <= 0) {
       return false;
     }
     this.todos.push(todo);

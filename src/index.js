@@ -1,3 +1,5 @@
+/* eslint-disable no-alert */
+// eslint-disable-next-line no-unused-vars
 import _ from 'lodash';
 import './main.scss';
 import Project from './modules/Project';
@@ -7,15 +9,9 @@ import DOMController from './modules/DOMController';
 let projects = [];
 if (localStorage.getItem('projects')) {
   projects = JSON.parse(localStorage.getItem('projects')).map((proj) => {
-    const project = new Project(
-      proj.name,
-      proj.category,
-      proj.description,
-      new Date(Date.parse(proj.dueDate)),
-      proj.status,
-    );
+    const project = new Project(proj.name, proj.category, proj.description, new Date(Date.parse(proj.dueDate)), proj.status);
     proj.todos.forEach((todo) => {
-      let tod = new Todo(todo.name, todo.description, new Date(Date.parse(todo.dueDate)), todo.status);
+      const tod = new Todo(todo.name, todo.description, new Date(Date.parse(todo.dueDate)), todo.status);
       project.addTodo(tod);
     });
     return project;
@@ -27,14 +23,14 @@ const projectCreate = () => {
     name: proName,
     category: proCategory,
     description: proDescription,
-    date: proDate
+    date: proDate,
   } = DOMController.projectInput();
   if (Project.validDate(proDate) <= 0) {
     alert('Invalid date');
     return;
   }
 
-  const pro = new Project(proName, proCategory, proDescription, proDate);
+  const pro = new Project(proName, proCategory.length === 0 ? 'default' : proCategory, proDescription, proDate);
   projects.push(pro);
 
   localStorage.setItem('projects', JSON.stringify(projects));
@@ -46,7 +42,11 @@ const projectCreate = () => {
 };
 
 const todoCreate = (project) => {
-  const { name: toName, description: toDescription, date: toDate } = DOMController.todoInput();
+  const {
+    name: toName,
+    description: toDescription,
+    date: toDate,
+  } = DOMController.todoInput();
   if (toName === '' || toDescription === '' || toDate.toDateString() === 'Invalid Date') return;
   if (Todo.validDate(toDate, project.getDueDate) >= 0) {
     alert('invalid date');
@@ -85,7 +85,11 @@ const deleteTodo = (project, index) => {
 };
 
 const editTodo = (project, index) => {
-  const { name, description, toDate } = DOMController.todoEditInput(index);
+  const {
+    name,
+    description,
+    toDate,
+  } = DOMController.todoEditInput(index);
   if (name === '' || description === '' || toDate.toDateString() === 'Invalid Date') return;
   if (Todo.validDate(toDate, project.getDueDate) >= 0 || Todo.validDate(toDate, new Date()) <= 0) {
     alert('invalid date');
